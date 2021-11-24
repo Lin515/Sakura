@@ -61,6 +61,7 @@ if (akina_option('akina_meta') == true) {
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
+<link rel="stylesheet" type="text/css" href="https://lin515.com/wp-content/themes/Sakura/inc/fonts/Lin515/Lin515.css">
 <link rel="shortcut icon" href="<?php echo akina_option('favicon_link', ''); ?>"/> 
 <meta name="theme-color" content="#31363b">
 <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -99,9 +100,14 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 						</div>
 						<?php }else{ ?>
 						<span class="site-title">
-							<span class="logolink serif">
+							<span class="logolink Lin515">
 								<a href="<?php bloginfo('url');?>">
-									<span class="site-name"><?php echo akina_option('site_name', ''); ?></span>
+									<ruby>
+										<span class="shironeko">在</span>
+										<span class="no">海浪声</span>
+										<span class="shironeko">里思念</span>
+										<span class="sakuraso"></span>
+									</ruby>
 								</a>
 							</span>
 						</span>	

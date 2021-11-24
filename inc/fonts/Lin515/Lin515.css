@@ -1,0 +1,85 @@
+@font-face {
+    font-family: "Lin515";
+    src: url("Lin515.eot"); /* IE9 */
+    src: url("Lin515.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("Lin515.woff") format("woff"), /* chrome、firefox */
+    url("Lin515.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("Lin515.svg#Lin515") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+.Lin515 {
+    font-family: 'Lin515', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;
+}
+ 
+.logolink .sakuraso {
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 5px;
+    color: #464646;
+    height: auto;
+    line-height: 25px;
+    margin-right: 0;
+    padding-bottom: 0px;
+    padding-top: 1px;
+    text-size-adjust: 100%;
+    width: auto;
+}
+ 
+.logolink a:hover .sakuraso {
+    background-color: orange;
+    color: #fff;
+}
+ 
+.logolink a:hover .shironeko,
+.logolink a:hover rt {
+    color: orange;
+}
+ 
+.logolink.Lin515 a {
+    color: #464646;
+    float: left;
+    font-size: 25px;
+    font-weight: 800;
+    height: 56px;
+    line-height: 56px;
+    padding-left: 6px;
+    padding-right: 15px;
+    padding-top: 11px;
+    text-decoration-line: none;
+}
+.logolink.Lin515 .sakuraso,.logolink.Lin515 .no {
+    font-size: 25px;
+    border-radius: 9px;
+    padding-bottom: 2px;
+    padding-top: 5px;
+}
+.logolink.Lin515 .no {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.logolink a:hover .no {
+    -webkit-animation: pulse 5.0s linear infinite;
+    animation: pulse 5.0s linear infinite;
+}
+ 
+.logolink ruby {
+    ruby-position: under;
+    -webkit-ruby-position: after;
+}
+ 
+.logolink ruby rt {
+    font-size: 10px;
+    transform: translateY(-15px);
+    opacity: 0;
+    transiton-property: opacity;
+    transition-duration: 0.5s, 0.5s;
+}
+ 
+.logolink a:hover ruby rt {
+    opacity: 1;
+}
+
