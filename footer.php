@@ -19,6 +19,7 @@
 		}
 	?>
 	</div><!-- #page Pjax container-->
+	<!--<script src="https://cdn.jsdelivr.net/gh/Lin515/live2d-widget/autoload.js"></script>-->
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info" theme-info="Sakura v<?php echo SAKURA_VERSION; ?>">
 			<div class="footertext">
@@ -29,7 +30,7 @@
 				<p style="color: #666666;"><?php echo akina_option('footer_info', ''); ?></p>
 			</div>
 			<div class="footer-device">
-			<p style="font-family: 'Ubuntu', sans-serif;">
+				<p style="font-family: 'Ubuntu', sans-serif;">
 					<span style="color: #b9b9b9;">
 						<?php /* 能保留下面两个链接吗？算是我一个小小的心愿吧~ */ ?>
 						Theme <a href="https://2heng.xin/theme-sakura/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>
