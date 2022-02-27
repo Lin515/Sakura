@@ -14,7 +14,7 @@
 		<?php if ( has_post_thumbnail() ) { ?>
 			<a href="<?php the_permalink();?>"><div class="overlay"><i class="iconfont icon-text"></i></div><?php the_post_thumbnail(); ?></a>
 			<?php } else {?>
-			<a href="<?php the_permalink();?>"><div class="overlay"><i class="iconfont icon-text"></i></div><img src="https://cdn.jsdelivr.net/gh/Lin515/CDN/Sakura-themes/images/random/d-<?php echo rand(1,6)?>.jpg" /></a>
+			<a href="<?php the_permalink();?>"><div class="overlay"><i class="iconfont icon-text"></i></div><img src="https://lin515.com/wp-content/themes/Sakura/images/random/m-<?php echo rand(1,6)?>.jpg" /></a>
 			<?php } ?>
 		</div>	
 		<h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
