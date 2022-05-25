@@ -28,13 +28,13 @@ mashiro_option.skin_bg6 = "<?php echo $bg_arry[6] ?>";
 mashiro_option.skin_bg7 = "<?php echo $bg_arry[7] ?>";
 <?php }else {?>
 mashiro_option.skin_bg0 = "none";
-mashiro_option.skin_bg1 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/sakura.png";
-mashiro_option.skin_bg2 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/plaid2dbf8.jpg";
-mashiro_option.skin_bg3 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/star02.png";
-mashiro_option.skin_bg4 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/kyotoanimation.png";
-mashiro_option.skin_bg5 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/dot_orange.gif";
+mashiro_option.skin_bg1 = "/wp-content/themes/Sakura/cdn-spirit/img/sakura.png";
+mashiro_option.skin_bg2 = "/wp-content/themes/Sakura/cdn-spirit/img/plaid2dbf8.jpg";
+mashiro_option.skin_bg3 = "/wp-content/themes/Sakura/cdn-spirit/img/star02.png";
+mashiro_option.skin_bg4 = "/wp-content/themes/Sakura/cdn-spirit/img/kyotoanimation.png";
+mashiro_option.skin_bg5 = "/wp-content/themes/Sakura/cdn-spirit/img/dot_orange.gif";
 mashiro_option.skin_bg6 = "https://api.mashiro.top/bing/";
-mashiro_option.skin_bg7 = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png";
+mashiro_option.skin_bg7 = "/wp-content/themes/Sakura/cdn-moezx/other-sites/api-index/images/me.png";
 <?php } ?>
 
 mashiro_option.darkmode = <?php if ( akina_option('darkmode') ){ echo 'true'; } else { echo 'false'; } ?>;

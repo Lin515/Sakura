@@ -1,0 +1,7 @@
+/manifest/gallary/*
+!/manifest/gallary/.gitkeep
+/manifest/jpeg/*
+!/manifest/jpeg/.gitkeep
+/manifest/webp/*
+!/manifest/webp/.gitkeep
+/manifest/manifest.json

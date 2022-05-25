@@ -143,7 +143,7 @@ function optionsframework_options()
         'name' => __('Change web background', 'sakura'), /*切换网页背景*/
         'desc' => __('The foreground switches the background of the webpage. There are 8 urls separated by commas. The order corresponds to the foreground scheme tool button position (the order of the buttons is from left to right, top to bottom). If no background is needed, fill in the corresponding position as none.<strong>Note: If the theme is updated from v3.2.3 and below, be sure to change the [Version Control] parameter under the [Other] tab of this configuration page to any new value!</strong>', 'sakura'), /*前台切换网页背景，共8个url，使用英文逗号分隔，顺序对应前台切换主题按钮位置（按钮顺序从左至右，从上至下）,如不需要背景则填写对应位置为none。<strong>注意：如果主题是从v3.2.3及以下更新过来的，请务必将本配置页的【其他】标签下的【版本控制】参数修改为任意新值！</strong>*/
         'id' => 'sakura_skin_bg',
-        'std' => 'none,https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/sakura.png,https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/plaid2dbf8.jpg,https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/star02.png,https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/kyotoanimation.png,https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/dot_orange.gif,https://api.mashiro.top/bing/,https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png',
+        'std' => 'none,/wp-content/themes/Sakura/cdn-spirit/img/sakura.png,/wp-content/themes/Sakura/cdn-spirit/img/plaid2dbf8.jpg,/wp-content/themes/Sakura/cdn-spirit/img/star02.png,/wp-content/themes/Sakura/cdn-spirit/img/kyotoanimation.png,/wp-content/themes/Sakura/cdn-spirit/img/dot_orange.gif,/wp-content/themes/Sakura/cdn-moezx/other-sites/api-index/images/me.png',
         'type' => 'textarea');
 
     $options[] = array(

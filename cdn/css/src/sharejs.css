@@ -1,6 +1,6 @@
 @font-face {
-	font-family:"socialshare";src:url("https://lin515.com/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.eot");
-src:url("https://lin515.com/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.eot?#iefix") format("embedded-opentype"),url("https://lin515.com/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.woff") format("woff"),url("https://lin515.com/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.ttf") format("truetype"),url("https://lin515.com/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.svg#iconfont") format("svg")
+	font-family:"socialshare";src:url("/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.eot");
+src:url("/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.eot?#iefix") format("embedded-opentype"),url("/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.woff") format("woff"),url("/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.ttf") format("truetype"),url("/wp-content/themes/Sakura/cdn/share.js/dist/fonts/iconfont.svg#iconfont") format("svg")
 }
 
 .social-share {
