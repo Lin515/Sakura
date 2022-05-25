@@ -11,7 +11,7 @@
 ?>
 <?php header('X-Frame-Options: SAMEORIGIN'); ?>
 <!DOCTYPE html>
-<!-- 
+<!--
 Theme by Mashiro
                       /^--^\     /^--^\     /^--^\
                       \____/     \____/     \____/
@@ -44,12 +44,12 @@ if (akina_option('akina_meta') == true) {
 		$categories = get_the_category();
 		if ($tags) {
 			foreach($tags as $tag) {
-				$keywords .= $tag->name . ','; 
+				$keywords .= $tag->name . ',';
 			};
 		};
 		if ($categories) {
 			foreach($categories as $category) {
-				$keywords .= $category->name . ','; 
+				$keywords .= $category->name . ',';
 			};
 		};
 		$description = mb_strimwidth( str_replace("\r\n", '', strip_tags($post->post_content)), 0, 240, '…');
@@ -61,8 +61,8 @@ if (akina_option('akina_meta') == true) {
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
-<link rel="stylesheet" type="text/css" href="https://lin515.com/wp-content/themes/Sakura/inc/fonts/Lin515/Lin515.css">
-<link rel="shortcut icon" href="<?php echo akina_option('favicon_link', ''); ?>"/> 
+<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/inc/fonts/Lin515/Lin515.css">
+<link rel="shortcut icon" href="<?php echo akina_option('favicon_link', ''); ?>"/>
 <meta name="theme-color" content="#31363b">
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <?php wp_head(); ?>
@@ -82,13 +82,13 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 <body <?php body_class(); ?>>
 	<div class="scrollbar" id="bar"></div>
 	<section id="main-container">
-		<?php 
-		if(!akina_option('head_focus')){ 
+		<?php
+		if(!akina_option('head_focus')){
 		$filter = akina_option('focus_img_filter');
 		?>
 		<div class="headertop <?php echo $filter; ?>">
 			<?php get_template_part('layouts/imgbox'); ?>
-		</div>	
+		</div>
 		<?php } ?>
 		<div id="page" class="site wrapper">
 			<header class="site-header no-select" role="banner">
@@ -110,7 +110,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 									</ruby>
 								</a>
 							</span>
-						</span>	
+						</span>
 						<?php } ?><!-- logo end -->
 					</div><!-- .site-branding -->
 					<?php header_user_menu(); if(akina_option('top_search') == 'yes') { ?>
@@ -123,12 +123,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 							<div class="line line3"></div>
 						</div><?php } ?>
 						<nav><?php wp_nav_menu( array( 'depth' => 2, 'theme_location' => 'primary', 'container' => false ) ); ?></nav><!-- #site-navigation -->
-					</div>	
+					</div>
 				</div>
 			</header><!-- #masthead -->
 			<?php if (get_post_meta(get_the_ID(), 'cover_type', true) == 'hls') {
                 the_video_headPattern_hls();
-            } elseif (get_post_meta(get_the_ID(), 'cover_type', true) == 'normal') { 
+            } elseif (get_post_meta(get_the_ID(), 'cover_type', true) == 'normal') {
                 the_video_headPattern_normal();
             }else {
                 the_headPattern();
