@@ -757,7 +757,7 @@ function optionsframework_options()
     $options[] = array(
         'name' => __('Comment field', 'sakura'), /*评论区*/
         'type' => 'heading');
- 
+
     $options[] = array(
         'name' => __('Gravatar avatar proxy', 'sakura'),
         'desc' => __('A front-ed proxy for Gravatar, eg. gravatar.2heng.xin/avatar . Leave it blank if you do not need.', 'sakura'),
@@ -1143,7 +1143,7 @@ function optionsframework_options()
         'id' => 'bilibili_id',
         'std' => '13972644',
         'type' => 'text');
-    
+
     $options[] = array(
         'name' => __('Bilibili Cookie', 'sakura'), /*Bilibili Cookie*/
         'desc' => __('Fill in your Cookies, go to your bilibili homepage, you can get cookies in brownser network pannel with pressing F12. If left this blank, you\'ll not get the progress.', 'sakura'),
@@ -1218,7 +1218,7 @@ function optionsframework_options()
         'name' => __('lazyload spinner', 'sakura'),
         'desc' => __('The placeholder to display when the image loads, fill in the image url', 'sakura'), /*图片加载时要显示的占位图，填写图片 url*/
         'id' => 'lazyload_spinner',
-        'std' => 'https://cdn.jsdelivr.net/gh/moezx/cdn@3.0.2/img/svg/loader/trans.ajax-spinner-preloader.svg',
+        'std' => get_template_directory_uri().'/cdn-moezx/img/svg/loader/trans.ajax-spinner-preloader.svg',
         'type' => 'text');
 
     $options[] = array(

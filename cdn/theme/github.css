@@ -738,7 +738,7 @@
     padding: 2px;
     text-shadow: none;
     border-radius: 0 0 5px 5px;
-    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur), auto
+    cursor: url(https://lin515.com/wp-content/themes/Sakura/cdn-moezx/img/Sakura/cursor/texto.cur), auto
 }
 
 .entry-content pre.highlight-wrap code[data-rel]:before {
@@ -880,8 +880,8 @@
 
 /*fix*/
 .entry-content pre table tr {
-    background-color: transparent; 
-    border-top: none; 
+    background-color: transparent;
+    border-top: none;
 }
 
 .entry-content pre table th, .entry-content pre table td {

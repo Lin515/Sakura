@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  Template Name: Login
  */
@@ -10,9 +10,9 @@ get_header();
 		<?php if(!is_user_logged_in()){ ?>
 			<div class="ex-login">
 				<div class="ex-login-title">
-					<p><img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.2.9/img/Sakura/images/none.png"></p>
+					<p><img src="<?php bloginfo('template_url'); ?>/cdn-moezx/img/Sakura/images/none.png"></p>
 				</div>
-				<form action="<?php echo home_url(); ?>/wp-login.php" method="post">  
+				<form action="<?php echo home_url(); ?>/wp-login.php" method="post">
 					<p><input type="text" name="log" id="log" value="<?php echo $_POST['log']; ?>" size="25" placeholder="Name" required /></p>
 					<p><input type="password" name="pwd" id="pwd" value="<?php echo $_POST['pwd']; ?>" size="25" placeholder="Password" required /></p>
 					<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" <?php checked( $rememberme ); ?> /> <?php esc_html_e( 'Remember Me' ); ?></label></p>

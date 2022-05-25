@@ -11,21 +11,21 @@
 
 ?>
 	</div><!-- #content -->
-	<?php 
+	<?php
 		if(akina_option('general_disqus_plugin_support')){
 			get_template_part('layouts/duoshuo');
 		}else{
-			comments_template('', true); 
+			comments_template('', true);
 		}
 	?>
 	</div><!-- #page Pjax container-->
-	<!--<script src="https://cdn.jsdelivr.net/gh/Lin515/live2d-widget/autoload.js"></script>-->
+	<!--<script src="<?php //bloginfo('template_url'); ?>/live2d-widget/autoload.js"></script>-->
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info" theme-info="Sakura v<?php echo SAKURA_VERSION; ?>">
 			<div class="footertext">
 				<div class="img-preload">
-					<img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/wordpress-rotating-ball-o.svg">
-					<img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/disqus-preloader.svg">
+					<img src="<?php bloginfo('template_url'); ?>/cdn-moezx/img/Sakura/images/wordpress-rotating-ball-o.svg">
+					<img src="<?php bloginfo('template_url'); ?>/cdn-moezx/img/Sakura/images/disqus-preloader.svg">
 				</div>
 				<p style="color: #666666;"><?php echo akina_option('footer_info', ''); ?></p>
 			</div>
@@ -40,7 +40,7 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 	<div class="openNav no-select">
-		<div class="iconflat no-select">	 
+		<div class="iconflat no-select">
 			<div class="icon"></div>
 		</div>
 		<div class="site-branding">
@@ -100,7 +100,7 @@
 <div class="changeSkin-gear no-select" style="bottom: -999px;">
     <div class="keys">
         <span id="open-skinMenu">
-		<i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL 
+		<i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
         </span>
     </div>
 </div>
@@ -134,9 +134,9 @@
         </ul>
     </div>
     <div class="font-family-controls row-container">
-        <button type="button" class="control-btn-serif selected" data-mode="serif" 
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
                 onclick="mashiro_global.font_control.change_font()">Serif</button>
-        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" 
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
                 onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
     </div>
 </div>
