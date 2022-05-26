@@ -11,9 +11,9 @@ mashiro_option.cookie_version_control = "<?php echo akina_option('cookie_version
 mashiro_option.qzone_autocomplete = false;
 mashiro_option.site_name = "<?php echo akina_option('site_name', ''); ?>";
 mashiro_option.author_name = "<?php echo akina_option('author_name', ''); ?>";
-mashiro_option.template_url = "<?php echo get_template_directory_uri(); ?>";
+mashiro_option.template_url = "<?php bloginfo('template_url'); ?>";
 mashiro_option.site_url = "<?php echo site_url(); ?>";
-mashiro_option.qq_api_url = "<?php echo rest_url('sakura/v1/qqinfo/json'); ?>"; 
+mashiro_option.qq_api_url = "<?php echo rest_url('sakura/v1/qqinfo/json'); ?>";
 // mashiro_option.qq_avatar_api_url = "https://api.2heng.xin/qqinfo/";
 mashiro_option.live_search = <?php if ( akina_option('live_search') ){ echo 'true'; } else { echo 'false'; } ?>;
 
@@ -58,14 +58,14 @@ mashiro_option.clipboardCopyright = true;
 <?php } ?>
 
 <?php if(akina_option('entry_content_theme') == "sakura"){ ?>
-mashiro_option.entry_content_theme_src = "<?php echo get_template_directory_uri() ?>/cdn/theme/sakura.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
+mashiro_option.entry_content_theme_src = "<?php bloginfo('template_url'); ?>/cdn/theme/sakura.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
 <?php }elseif(akina_option('entry_content_theme') == "github") {?>
-mashiro_option.entry_content_theme_src = "<?php echo get_template_directory_uri() ?>/cdn/theme/github.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
+mashiro_option.entry_content_theme_src = "<?php bloginfo('template_url'); ?>/cdn/theme/github.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
 <?php } ?>
 mashiro_option.entry_content_theme = "<?php echo akina_option('entry_content_theme'); ?>";
 
 <?php if(akina_option('jsdelivr_cdn_test')){ ?>
-mashiro_option.jsdelivr_css_src = "<?php echo get_template_directory_uri() ?>/cdn/css/lib.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
+mashiro_option.jsdelivr_css_src = "<?php bloginfo('template_url'); ?>/cdn/css/lib.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
 <?php } else { ?>
 mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/mashirozx/Sakura@<?php echo SAKURA_VERSION; ?>/cdn/css/lib.min.css";
 <?php } ?>
