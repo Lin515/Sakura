@@ -812,7 +812,7 @@ function custom_login()
 {
     //echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/inc/login.css" />'."\n";
     echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/inc/login.css?' . SAKURA_VERSION . '" />' . "\n";
-    echo '<script type="text/javascript" src="'.get_bloginfo('template_directory').'/js/jquery-3.6.0.slim.min.js"></script>'."\n";
+    echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/jquery-3.6.0.slim.min.js"></script>'."\n";
     // echo '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@1.9.0/jquery.min.js"></script>' . "\n";
 }
 
@@ -842,7 +842,7 @@ function custom_html()
     }
     echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/login.js"></script>' . "\n";
     echo '<script type="text/javascript">' . "\n";
-    echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'.get_template_directory_uri().'/img/Sakura/images/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
+    echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
     echo 'jQuery(\'#bg\').children(\'img\').attr(\'src\', \'' . $loginbg . '\').load(function(){' . "\n";
     echo '	resizeImage(\'bg\');' . "\n";
     echo '	jQuery(window).bind("resize", function() { resizeImage(\'bg\'); });' . "\n";
