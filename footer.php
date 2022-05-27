@@ -19,7 +19,7 @@
 		}
 	?>
 	</div><!-- #page Pjax container-->
-	<!--<script src="<?php //bloginfo('template_url'); ?>/live2d-widget/autoload.js"></script>-->
+	<script src="<?php bloginfo('template_url'); ?>/cdn/live2d-widget/autoload.js"></script>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info" theme-info="Sakura v<?php echo SAKURA_VERSION; ?>">
 			<div class="footertext">
