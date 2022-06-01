@@ -28,11 +28,11 @@ mashiro_option.skin_bg6 = "<?php echo $bg_arry[6] ?>";
 mashiro_option.skin_bg7 = "<?php echo $bg_arry[7] ?>";
 <?php }else {?>
 mashiro_option.skin_bg0 = "none";
-mashiro_option.skin_bg1 = "/wp-content/themes/Sakura/cdn-spirit/img/sakura.png";
-mashiro_option.skin_bg2 = "/wp-content/themes/Sakura/cdn-spirit/img/plaid2dbf8.jpg";
-mashiro_option.skin_bg3 = "/wp-content/themes/Sakura/cdn-spirit/img/star02.png";
-mashiro_option.skin_bg4 = "/wp-content/themes/Sakura/cdn-spirit/img/kyotoanimation.png";
-mashiro_option.skin_bg5 = "/wp-content/themes/Sakura/cdn-spirit/img/dot_orange.gif";
+mashiro_option.skin_bg1 = "/wp-content/themes/Sakura/cdn/background/sakura.png";
+mashiro_option.skin_bg2 = "/wp-content/themes/Sakura/cdn/background/plaid2dbf8.jpg";
+mashiro_option.skin_bg3 = "/wp-content/themes/Sakura/cdn/background/star02.png";
+mashiro_option.skin_bg4 = "/wp-content/themes/Sakura/cdn/background/kyotoanimation.png";
+mashiro_option.skin_bg5 = "/wp-content/themes/Sakura/cdn/background/dot_orange.gif";
 mashiro_option.skin_bg6 = "https://api.mashiro.top/bing/";
 mashiro_option.skin_bg7 = "/wp-content/themes/Sakura/cdn-moezx/other-sites/api-index/images/me.png";
 <?php } ?>
