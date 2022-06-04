@@ -1,3 +1,4 @@
+/manifest/__pycache__
 /manifest/gallary/*
 !/manifest/gallary/.gitkeep
 /manifest/jpeg/*
