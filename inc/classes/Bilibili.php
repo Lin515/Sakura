@@ -39,24 +39,27 @@ class Bilibili
         $lists = $bgm["list"];
         $html = "";
         foreach ((array)$lists as $list) {
-            if (preg_match('/看完/m', $list["progress"], $matches_finish)) {
-                $percent = 100;
-            } else {
-                preg_match('/第(\d+)./m', $list['progress'], $matches_progress);
-                preg_match('/第(\d+)./m', $list["new_ep"]['index_show'], $matches_new);
-                $progress = is_numeric($matches_progress[1]) ? $matches_progress[1] : 0;
-                $total = is_numeric($matches_new[1]) ? $matches_new[1] : $list['total_count'];
-                $percent = $progress / $total * 100;
-            }
+            preg_match('/第(\d+)./m', $list['progress'], $matches_progress);
+            preg_match('/第(\d+)./m', $list["new_ep"]['index_show'], $matches_new);
+            $progress = is_numeric($matches_progress[1]) ? $matches_progress[1] : 0;
+            $total = is_numeric($matches_new[1]) ? $matches_new[1] : $list['total_count'];
+            $percent = $progress / $total * 100;
+            if ($progress > $total)
+                $schedule = $list['progress'];
+            elseif ($progress == $total)
+                $schedule = '已追完全' . $progress . '话';
+            else
+                $schedule = '追番进度:' . $progress . '/'. $total;
+
             $html .= '<div class="column">
                 <a class="bangumi-item" href="https://bangumi.bilibili.com/anime/' . $list['season_id'] . '/" target="_blank" rel="nofollow">
-                    <img class="bangumi-image" src="' . str_replace('http://', 'https://', $list['cover']) . '"/>
+                    <img class="bangumi-image" referrerPolicy="no-referrer" src="' . str_replace('http://', 'https://', $list['cover']) . '"/>
                     <div class="bangumi-info">
                         <h3 class="bangumi-title" title="' . $list['title'] . '">' . $list['title'] . '</h2>
                         <div class="bangumi-summary"> ' . $list['evaluate'] . ' </div>
                         <div class="bangumi-status">
                             <div class="bangumi-status-bar" style="width: ' . $percent . '%"></div>
-                            <p>' . $list['new_ep']['index_show'] . '</p>         
+                            <p>' . $schedule . '</p>
                         </div>
                     </div>
                 </a>
