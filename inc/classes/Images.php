@@ -40,7 +40,7 @@ class Images
             $status = $reply->status_code;
             $success = false;
             $message = $reply->error->message;
-            $link = 'https://view.moezx.cc/images/2019/10/28/default_d_h_large.gif';
+            $link = static_link() . '/img/other/default_d_h_large.gif';
             $proxy = akina_option('cmt_image_proxy') . $link;
         }
         $output = array(
@@ -80,7 +80,7 @@ class Images
             $status = $reply->status;
             $success = false;
             $message = $reply->data->error;
-            $link = 'https://view.moezx.cc/images/2019/10/28/default_d_h_large.gif';
+            $link = static_link() . '/img/other/default_d_h_large.gif';
             $proxy = akina_option('cmt_image_proxy') . $link;
         }
         $output = array(
@@ -128,7 +128,7 @@ class Images
             $status = 400;
             $success = false;
             $message = $reply->message;
-            $link = 'https://view.moezx.cc/images/2019/10/28/default_d_h_large.gif';
+            $link = static_link() . '/img/other/default_d_h_large.gif';
             $proxy = akina_option('cmt_image_proxy') . $link;
         }
         $output = array(

@@ -492,3 +492,18 @@ if ( ! function_exists( 'akina_option' ) ) {
 		return $default;
 	}
 }
+
+if ( ! function_exists('static_link') ) {
+	function static_link()
+	{
+		if (akina_option('static_use_local') || akina_option('static_cdn') === '')
+			return get_template_directory_uri() . '/cdn';
+		else
+			return akina_option('static_cdn');
+	}
+
+	function static_link_e()
+	{
+		echo static_link();
+	}
+}

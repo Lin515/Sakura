@@ -1,5 +1,5 @@
 <?php
- 
+
 	/**
 	 * COMMENTS TEMPLATE
 	 */
@@ -24,12 +24,12 @@
 		</div>
 
 		<div class="comments-main">
-		 <h3 id="comments-list-title">Comments | <span class="noticom"><?php comments_number('NOTHING', '1'.__(" comment","sakura"), '%'.__(" comments","sakura")); ?> </span></h3> 
+		 <h3 id="comments-list-title">Comments | <span class="noticom"><?php comments_number('NOTHING', '1'.__(" comment","sakura"), '%'.__(" comments","sakura")); ?> </span></h3>
 		<div id="loading-comments"><span></span></div>
 			<?php if(have_comments()): ?>
 
 				<ul class="commentwrap">
-					<?php wp_list_comments('type=comment&callback=akina_comment_format'); ?>	
+					<?php wp_list_comments('type=comment&callback=akina_comment_format'); ?>
 				</ul>
 
           <nav id="comments-navi">
@@ -41,7 +41,7 @@
 				<?php if(comments_open()): ?>
 					<div class="commentwrap">
 						<div class="notification-hidden"><i class="iconfont icon-mark"></i> <?php _e('no comment', 'sakura'); /*暂无评论*/?></div>
-					
+
 					</div>
 				<?php endif; ?>
 
@@ -70,7 +70,7 @@
                         <div class="emotion-box no-select">
                             <table class="motion-switcher-table">
                                 <tr>
-                                    <th onclick="motionSwitch(\'.bili\')" 
+                                    <th onclick="motionSwitch(\'.bili\')"
                                         class="bili-bar on-hover">bilibili~</th>
                                     <th onclick="motionSwitch(\'.menhera\')"
                                         class="menhera-bar">(=・ω・=)</th>
@@ -88,7 +88,7 @@
 						'comment_notes_after' => '',
 						'comment_notes_before' => '',
 						'fields' => apply_filters( 'comment_form_default_fields', array(
-                            'avatar' => '<div class="cmt-info-container"><div class="comment-user-avatar"><img src="' . get_template_directory_uri() . '/images/avatar.jpeg"><div class="socila-check qq-check"><i class="fa fa-qq" aria-hidden="true"></i></div><div class="socila-check gravatar-check"><i class="fa fa-google" aria-hidden="true"></i></div></div>',
+                            'avatar' => '<div class="cmt-info-container"><div class="comment-user-avatar"><img src="' . static_link() . '/img/Sakura/images/avatar.jpeg"><div class="socila-check qq-check"><i class="fa fa-qq" aria-hidden="true"></i></div><div class="socila-check gravatar-check"><i class="fa fa-google" aria-hidden="true"></i></div></div>',
 							'author' =>
 								'<div class="popup cmt-popup cmt-author" onclick="cmt_showPopup(this)"><span class="popuptext" id="thePopup" style="margin-left: -115px;width: 230px;">' . __("Auto pull nickname and avatar with a QQ num. entered", "sakura")/*输入QQ号将自动拉取昵称和头像*/ . '</span><input type="text" placeholder="' . __("Nickname or QQ number", "sakura") /*昵称或QQ号*/. ' ' . ( $req ?  '(' . __("Name* ", "sakura") . ')' : '') . '" name="author" id="author" value="' . esc_attr($comment_author) . '" size="22" autocomplete="off" tabindex="1" ' . ($req ? "aria-required='true'" : '' ). ' /></div>',
 							'email' =>

@@ -17,25 +17,10 @@
 bloginfo( 'name' );$site_description = get_bloginfo( 'description', 'display' );
 if ( $site_description && ( is_home() || is_front_page() ) ) echo " - $site_description";if ( $paged >= 2 || $page >= 2 ) echo ' - ' . sprintf( __( 'page %s'), max( $paged, $page ) );/*第 %s 页*/?>
 </title>
-<link type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/cdn-moezx/css/lib.css" rel="stylesheet" />
+<link type="text/css" media="all" href="<?php static_link_e(); ?>/css/lib.css" rel="stylesheet" />
 <?php wp_head(); ?>
 <script>
-var the_url=window.location.href;
 var the_dom="<?php echo str_replace("http://", "", str_replace("https://", "", get_site_url())); ?>";
-var no_report = false;
-if (the_dom!= '2heng.xin') {
-    no_report = true;
-}
-var the_ua=navigator.userAgent;
-var the_ref=document.referrer;
-function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-var report_url = "https://api.mashiro.top/count/404/?" + "url="+the_url+"&ua="+the_ua+"&ref="+the_ref;
-if (!no_report) httpGet(report_url);
 </script>
 </head>
 <body <?php body_class(); ?>>
@@ -55,5 +40,5 @@ if (!no_report) httpGet(report_url);
 </form>
 </div>
 </section>
-<script src="<?php bloginfo('template_url'); ?>/cdn-moezx/js/other/404.min.js" type="text/javascript"></script>
+<script src="<?php static_link_e(); ?>/js/404.min.js" type="text/javascript"></script>
 </body>

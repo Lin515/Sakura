@@ -28,13 +28,13 @@ mashiro_option.skin_bg6 = "<?php echo $bg_arry[6] ?>";
 mashiro_option.skin_bg7 = "<?php echo $bg_arry[7] ?>";
 <?php }else {?>
 mashiro_option.skin_bg0 = "none";
-mashiro_option.skin_bg1 = "/wp-content/themes/Sakura/cdn/background/sakura.png";
-mashiro_option.skin_bg2 = "/wp-content/themes/Sakura/cdn/background/plaid2dbf8.jpg";
-mashiro_option.skin_bg3 = "/wp-content/themes/Sakura/cdn/background/star02.png";
-mashiro_option.skin_bg4 = "/wp-content/themes/Sakura/cdn/background/kyotoanimation.png";
-mashiro_option.skin_bg5 = "/wp-content/themes/Sakura/cdn/background/dot_orange.gif";
+mashiro_option.skin_bg1 = static_link() . "/background/sakura.png";
+mashiro_option.skin_bg2 = static_link() . "/background/plaid2dbf8.jpg";
+mashiro_option.skin_bg3 = static_link() . "/background/star02.png";
+mashiro_option.skin_bg4 = static_link() . "/background/kyotoanimation.png";
+mashiro_option.skin_bg5 = static_link() . "/background/dot_orange.gif";
 mashiro_option.skin_bg6 = "https://api.mashiro.top/bing/";
-mashiro_option.skin_bg7 = "/wp-content/themes/Sakura/cdn-moezx/other-sites/api-index/images/me.png";
+mashiro_option.skin_bg7 = static_link() . "/img/other/me.png";
 <?php } ?>
 
 mashiro_option.darkmode = <?php if ( akina_option('darkmode') ){ echo 'true'; } else { echo 'false'; } ?>;
@@ -58,17 +58,13 @@ mashiro_option.clipboardCopyright = true;
 <?php } ?>
 
 <?php if(akina_option('entry_content_theme') == "sakura"){ ?>
-mashiro_option.entry_content_theme_src = "<?php bloginfo('template_url'); ?>/cdn/theme/sakura.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
+mashiro_option.entry_content_theme_src = "<?php static_link_e(); ?>/theme/sakura.min.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
 <?php }elseif(akina_option('entry_content_theme') == "github") {?>
-mashiro_option.entry_content_theme_src = "<?php bloginfo('template_url'); ?>/cdn/theme/github.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
+mashiro_option.entry_content_theme_src = "<?php static_link_e(); ?>/theme/github.min.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
 <?php } ?>
 mashiro_option.entry_content_theme = "<?php echo akina_option('entry_content_theme'); ?>";
 
-<?php if(akina_option('jsdelivr_cdn_test')){ ?>
-mashiro_option.jsdelivr_css_src = "<?php bloginfo('template_url'); ?>/cdn/css/lib.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
-<?php } else { ?>
-mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/mashirozx/Sakura@<?php echo SAKURA_VERSION; ?>/cdn/css/lib.min.css";
-<?php } ?>
+mashiro_option.jsdelivr_css_src = "<?php static_link_e(); ?>/css/lib.css?<?php echo SAKURA_VERSION.akina_option('cookie_version', ''); ?>";
 <?php if (akina_option('aplayer_server') != 'off'): ?>
 mashiro_option.float_player_on = true;
 mashiro_option.meting_api_url = "<?php echo rest_url('sakura/v1/meting/aplayer'); ?>";

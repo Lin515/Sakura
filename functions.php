@@ -176,19 +176,15 @@ add_action('after_setup_theme', 'akina_content_width', 0);
  */
 function sakura_scripts()
 {
-    if (akina_option('jsdelivr_cdn_test')) {
-        wp_enqueue_script('js_lib', get_template_directory_uri() . '/cdn/js/lib.js', array(), SAKURA_VERSION . akina_option('cookie_version', ''), true);
-    } else {
-        wp_enqueue_script('js_lib', 'https://cdn.jsdelivr.net/gh/mashirozx/Sakura@' . SAKURA_VERSION . '/cdn/js/lib.min.js', array(), SAKURA_VERSION, true);
+    wp_enqueue_script('js_lib', static_link() . '/js/lib.js', array(), SAKURA_VERSION . akina_option('cookie_version', ''), true);
+    wp_enqueue_style('saukra_css', get_template_directory_uri() . '/style.min.css', array(), SAKURA_VERSION);
+    wp_enqueue_script('app', static_link() . '/js/sakura-app.min.js', array(), SAKURA_VERSION, true);
+
+    if (!akina_option('aplayer_close') && akina_option('aplayer_server') != 'off')
+    {
+        wp_enqueue_script('aplayer_js', static_link() . '/APlayer/dist/APlayer.min.js', array(), SAKURA_VERSION, true);
+        wp_enqueue_style('aplayer_css', static_link() . '/APlayer/dist/APlayer.min.css', array(), SAKURA_VERSION);
     }
-    if (akina_option('app_no_jsdelivr_cdn')) {
-        wp_enqueue_style('saukra_css', get_stylesheet_uri(), array(), SAKURA_VERSION);
-        wp_enqueue_script('app', get_template_directory_uri() . '/js/sakura-app.js', array(), SAKURA_VERSION, true);
-    } else {
-        wp_enqueue_style('saukra_css', 'https://cdn.jsdelivr.net/gh/mashirozx/Sakura@' . SAKURA_VERSION . '/style.min.css', array(), SAKURA_VERSION);
-        wp_enqueue_script('app', 'https://cdn.jsdelivr.net/gh/mashirozx/Sakura@' . SAKURA_VERSION . '/js/sakura-app.min.js', array(), SAKURA_VERSION, true);
-    }
-    //wp_enqueue_script('github_card', get_template_directory_uri().'/cdn/github-cards/widget.js', array(), SAKURA_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -410,7 +406,7 @@ function convertip($ip)
  * COMMENT FORMATTING
  *
  * 标准的 lazyload 输出头像
- * <?php echo str_replace( 'src=', 'src="'.get_template_directory_uri().'/cdn-moezx/img/svg/loader/index.ajax-spinner-preloader.svg" onerror="imgError(this,1)" data-src=', get_avatar( $comment->comment_author_email, '80', '', get_comment_author(), array( 'class' => array( 'lazyload' ) ) ) ); ?>
+ * <?php echo str_replace( 'src=', 'src="'. static_link() . '/img/svg/loader/index.ajax-spinner-preloader.svg" onerror="imgError(this,1)" data-src=', get_avatar( $comment->comment_author_email, '80', '', get_comment_author(), array( 'class' => array( 'lazyload' ) ) ) ); ?>
  *
  * 如果不延时是这样的
  * <?php echo get_avatar( $comment->comment_author_email, '80', '', get_comment_author() ); ?>
@@ -426,7 +422,7 @@ if (!function_exists('akina_comment_format')) {
 				<div class="comment-arrow">
 					<div class="main shadow">
 						<div class="profile">
-							<a href="<?php comment_author_url();?>" target="_blank" rel="nofollow"><?php echo str_replace('src=', 'src="'.get_template_directory_uri().'/cdn-moezx/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this,1)" data-src=', get_avatar($comment->comment_author_email, '80', '', get_comment_author(), array('class' => array('lazyload')))); ?></a>
+							<a href="<?php comment_author_url();?>" target="_blank" rel="nofollow"><?php echo str_replace('src=', 'src="'. static_link() . '/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this,1)" data-src=', get_avatar($comment->comment_author_email, '80', '', get_comment_author(), array('class' => array('lazyload')))); ?></a>
 						</div>
 						<div class="commentinfo">
 							<section class="commeta">
@@ -475,19 +471,19 @@ function get_author_class($comment_author_email, $user_id)
         "SELECT comment_ID as author_count FROM $wpdb->comments WHERE comment_author_email = '$comment_author_email' "));
     if ($author_count >= 1 && $author_count < 5) //数字可自行修改，代表评论次数。
     {
-        echo '<span class="showGrade0" title="Lv0"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_0.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade0" title="Lv0"><img src="'. static_link() . '/img/Sakura/images/level/level_0.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 6 && $author_count < 10) {
-        echo '<span class="showGrade1" title="Lv1"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_1.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade1" title="Lv1"><img src="'. static_link() . '/img/Sakura/images/level/level_1.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 10 && $author_count < 20) {
-        echo '<span class="showGrade2" title="Lv2"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_2.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade2" title="Lv2"><img src="'. static_link() . '/img/Sakura/images/level/level_2.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 20 && $author_count < 40) {
-        echo '<span class="showGrade3" title="Lv3"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_3.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade3" title="Lv3"><img src="'. static_link() . '/img/Sakura/images/level/level_3.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 40 && $author_count < 80) {
-        echo '<span class="showGrade4" title="Lv4"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_4.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade4" title="Lv4"><img src="'. static_link() . '/img/Sakura/images/level/level_4.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 80 && $author_count < 160) {
-        echo '<span class="showGrade5" title="Lv5"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_5.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade5" title="Lv5"><img src="'. static_link() . '/img/Sakura/images/level/level_5.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 160) {
-        echo '<span class="showGrade6" title="Lv6"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/level/level_6.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade6" title="Lv6"><img src="'. static_link() . '/img/Sakura/images/level/level_6.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     }
 
 }
@@ -590,10 +586,10 @@ function get_the_link_items($id = null)
             }
 
             if (empty($bookmark->link_image)) {
-                $bookmark->link_image = 'https://view.moezx.cc/images/2017/12/30/Transparent_Akkarin.th.jpg';
+                $bookmark->link_image = static_link() . '/img/other/Transparent_Akkarin.th.jpg';
             }
 
-            $output .= '<li class="link-item"><a class="link-item-inner effect-apollo" href="' . $bookmark->link_url . '" title="' . $bookmark->link_description . '" target="_blank" rel="friend"><img class="lazyload" onerror="imgError(this,1)" data-src="' . $bookmark->link_image . '" src="'.get_template_directory_uri().'/cdn-moezx/img/svg/loader/trans.ajax-spinner-preloader.svg"><span class="sitename">' . $bookmark->link_name . '</span><div class="linkdes">' . $bookmark->link_description . '</div></a></li>';
+            $output .= '<li class="link-item"><a class="link-item-inner effect-apollo" href="' . $bookmark->link_url . '" title="' . $bookmark->link_description . '" target="_blank" rel="friend"><img class="lazyload" onerror="imgError(this,1)" data-src="' . $bookmark->link_image . '" src="'. static_link() . '/img/svg/loader/trans.ajax-spinner-preloader.svg"><span class="sitename">' . $bookmark->link_name . '</span><div class="linkdes">' . $bookmark->link_description . '</div></a></li>';
         }
         $output .= '</ul>';
     }
@@ -810,9 +806,9 @@ function bolo_QTnextpage_arg1() {
 //Login Page style
 function custom_login()
 {
-    //echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/inc/login.css" />'."\n";
+    //echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/inc/login.css" />'."\n";
     echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/inc/login.css?' . SAKURA_VERSION . '" />' . "\n";
-    echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/jquery.min.js"></script>'."\n";
+    echo '<script type="text/javascript" src="' . static_link() . '/js/jquery.min.js"></script>'."\n";
     // echo '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@1.9.0/jquery.min.js"></script>' . "\n";
 }
 
@@ -838,11 +834,11 @@ function custom_html()
     if (akina_option('login_bg')) {
         $loginbg = akina_option('login_bg');
     } else {
-        $loginbg = get_template_directory_uri() . '/images/hd.png';
+        $loginbg = static_link() . '/img/Sakura/images/hd.png';
     }
-    echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/login.js"></script>' . "\n";
+    echo '<script type="text/javascript" src="' . static_link() . '/js/login.js"></script>' . "\n";
     echo '<script type="text/javascript">' . "\n";
-    echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
+    echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'. static_link() . '/img/Sakura/images/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
     echo 'jQuery(\'#bg\').children(\'img\').attr(\'src\', \'' . $loginbg . '\').load(function(){' . "\n";
     echo '	resizeImage(\'bg\');' . "\n";
     echo '	jQuery(window).bind("resize", function() { resizeImage(\'bg\'); });' . "\n";
@@ -966,7 +962,7 @@ function comment_mail_notify($comment_id)
       -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.18);">
         <header style="overflow: hidden;">
-            <img style="width:100%;z-index: 666;" src="'.get_template_directory_uri().'/cdn-moezx/img/other/head.jpg">
+            <img style="width:100%;z-index: 666;" src="'. static_link() . '/img/other/head.jpg">
         </header>
         <div style="padding: 5px 20px;">
         <p style="position: relative;
@@ -988,7 +984,7 @@ function comment_mail_notify($comment_id)
         . trim($comment->comment_content) . '</div>
 
       <div style="text-align: center;">
-          <img src="'.get_template_directory_uri().'/cdn-moezx/img/other/hr.png" alt="hr" style="width:100%;
+          <img src="'. static_link() . '/img/other/hr.png" alt="hr" style="width:100%;
                                                                                                   margin:5px auto 5px auto;
                                                                                                   display: block;">
           <a style="text-transform: uppercase;
@@ -1006,7 +1002,7 @@ function comment_mail_notify($comment_id)
     </div>
 ';
         $message = convert_smilies($message);
-        $message = str_replace("{{", '<img src="'.get_template_directory_uri().'/cdn-moezx/img/bili/hd/ic_emoji_', $message);
+        $message = str_replace("{{", '<img src="'. static_link() . '/img/Sakura/images/smilies/bili/hd/ic_emoji_', $message);
         $message = str_replace("}}", '.png" alt="emoji" style="height: 2em; max-height: 2em;">', $message);
 
         $message = str_replace('{UPLOAD}', 'https://i.loli.net/', $message);
@@ -1069,9 +1065,9 @@ function comment_picture_support($content)
     $content = str_replace('http://', 'https://', $content); // 干掉任何可能的 http
     $content = str_replace('{UPLOAD}', 'https://i.loli.net/', $content);
     $content = str_replace('[/img][img]', '[/img^img]', $content);
-    $content = str_replace('[img]', '<br><img src="'.get_template_directory_uri().'/cdn-moezx/img/svg/loader/trans.ajax-spinner-preloader.svg" data-src="', $content);
+    $content = str_replace('[img]', '<br><img src="'. static_link() . '/img/svg/loader/trans.ajax-spinner-preloader.svg" data-src="', $content);
     $content = str_replace('[/img]', '" class="lazyload comment_inline_img" onerror="imgError(this)"><br>', $content);
-    $content = str_replace('[/img^img]', '" class="lazyload comment_inline_img" onerror="imgError(this)"><img src="'.get_template_directory_uri().'/cdn-moezx/img/svg/loader/trans.ajax-spinner-preloader.svg" data-src="', $content);
+    $content = str_replace('[/img^img]', '" class="lazyload comment_inline_img" onerror="imgError(this)"><img src="'. static_link() . '/img/svg/loader/trans.ajax-spinner-preloader.svg" data-src="', $content);
     return $content;
 }
 add_filter('comment_text', 'comment_picture_support');
@@ -1082,7 +1078,7 @@ add_filter('comment_text', 'comment_picture_support');
 add_filter('smilies_src', 'custom_smilies_src', 1, 10);
 function custom_smilies_src($img_src, $img, $siteurl)
 {
-    return get_template_directory_uri().'/cdn-moezx/img/Sakura/images/smilies/' . $img;
+    return static_link() . '/img/Sakura/images/smilies/' . $img;
 }
 // 简单遍历系统表情库，今后应考虑标识表情包名——使用增加的扩展名，同时保留原有拓展名
 // 还有一个思路是根据表情调用路径来判定<-- 此法最好！
@@ -1093,7 +1089,7 @@ function push_smilies()
     foreach ($wpsmiliestrans as $k => $v) {
         $Sname = str_replace(":", "", $k);
         $Svalue = $v;
-        $return_smiles = $return_smiles . '<span title="' . $Sname . '" onclick="grin(' . "'" . $Sname . "'" . ')"><img src="'.get_template_directory_uri().'/cdn-moezx/img/Sakura/images/smilies/' . $Svalue . '" /></span>';
+        $return_smiles = $return_smiles . '<span title="' . $Sname . '" onclick="grin(' . "'" . $Sname . "'" . ')"><img src="'. static_link() . '/img/Sakura/images/smilies/' . $Svalue . '" /></span>';
     }
     return $return_smiles;
 }
@@ -1217,21 +1213,21 @@ $bilismiliestrans = array();
 function push_bili_smilies()
 {
     global $bilismiliestrans;
-    $smiles_path = __DIR__ . "/images/smilies/bili/";
+    $smiles_path = __DIR__ . "/cdn/img/Sakura/images/smilies/bili/";
     $name = array('baiyan', 'fadai', 'koubi', 'qinqin', 'weiqu', 'bishi', 'fanu', 'kun', 'se', 'weixiao', 'bizui', 'ganga', 'lengmo', 'shengbing', 'wunai', 'chan', 'guilian', 'liubixue', 'shengqi', 'xiaoku', 'daku', 'guzhang', 'liuhan', 'shuizhao', 'xieyanxiao', 'dalao', 'haixiu', 'liulei', 'sikao', 'yiwen', 'dalian', 'heirenwenhao', 'miantian', 'tiaokan', 'yun', 'dianzan', 'huaixiao', 'mudengkoudai', 'tiaopi', 'zaijian', 'doge', 'jingxia', 'nanguo', 'touxiao', 'zhoumei', 'facai', 'keai', 'outu', 'tuxue', 'zhuakuang');
     $return_smiles = '';
     for ($i = 0; $i < count($name); $i++) {
         $img_size = getimagesize($smiles_path . $name[$i] . ".png");
         $img_height = $img_size["1"];
         // 选择面版
-        $return_smiles = $return_smiles . '<span class="emotion-secter emotion-item emotion-select-parent" onclick="grin(' . "'" . $name[$i] . "'" . ',type = \'Math\')" style="background-image: url('.get_template_directory_uri().'/cdn-moezx/img/bili/hd/ic_emoji_' . $name[$i] . '.png);"><div class="img emotion-select-child" style="background-image: url('.get_template_directory_uri().'/cdn-moezx/img/bili/' . $name[$i] . '.png);
+        $return_smiles = $return_smiles . '<span class="emotion-secter emotion-item emotion-select-parent" onclick="grin(' . "'" . $name[$i] . "'" . ',type = \'Math\')" style="background-image: url('. static_link() . '/img/Sakura/images/smilies/bili/hd/ic_emoji_' . $name[$i] . '.png);"><div class="img emotion-select-child" style="background-image: url('. static_link() . '/img/Sakura/images/smilies/bili/' . $name[$i] . '.png);
         animation-duration: ' . ($img_height / 32 * 40) . 'ms;
         animation-timing-function: steps(' . ($img_height / 32) . ');
         transform: translateY(-' . ($img_height - 32) . 'px);
         height: ' . $img_height . 'px;
         "></div></span>';
         // 正文转换
-        $bilismiliestrans['{{' . $name[$i] . '}}'] = '<span class="emotion-inline emotion-item"><img src="'.get_template_directory_uri().'/cdn-moezx/img/bili/' . $name[$i] . '.png" class="img" style="/*background-image: url();*/
+        $bilismiliestrans['{{' . $name[$i] . '}}'] = '<span class="emotion-inline emotion-item"><img src="'. static_link() . '/img/Sakura/images/smilies/bili/' . $name[$i] . '.png" class="img" style="/*background-image: url();*/
         animation-duration: ' . ($img_height / 32 * 40) . 'ms;
         animation-timing-function: steps(' . ($img_height / 32) . ');
         transform: translateY(-' . ($img_height - 32) . 'px);
@@ -1265,7 +1261,7 @@ add_filter('the_content_feed', 'featuredtoRSS');
 //
 function bili_smile_filter_rss($content)
 {
-    $content = str_replace("{{", '<img src="'.get_template_directory_uri().'/cdn-moezx/img/bili/hd/ic_emoji_', $content);
+    $content = str_replace("{{", '<img src="'. static_link() . '/img/Sakura/images/smilies/bili/hd/ic_emoji_', $content);
     $content = str_replace("}}", '.png" alt="emoji" style="height: 2em; max-height: 2em;">', $content);
     $content = str_replace('[img]', '<img src="', $content);
     $content = str_replace('[/img]', '" style="display: block;margin-left: auto;margin-right: auto;">', $content);
@@ -1477,7 +1473,7 @@ function admin_ini()
 {
     wp_enqueue_style('admin-styles-fix-icon', get_site_url() . '/wp-includes/css/dashicons.css');
     wp_enqueue_style('cus-styles-fit', get_template_directory_uri() . '/inc/css/dashboard-fix.css');
-    wp_enqueue_script('lazyload', get_template_directory_uri() . '/cdn/lazyload-2.x/lazyload.min.js');
+    wp_enqueue_script('lazyload', static_link() . '/lazyload-2.x/lazyload.min.js');
 }
 add_action('admin_enqueue_scripts', 'admin_ini');
 
@@ -1556,7 +1552,7 @@ function dash_scheme($key, $name, $col1, $col2, $col3, $col4, $base, $focus, $cu
 dash_scheme($key = "sakura", $name = "Sakura🌸",
     $col1 = '#8fbbb1', $col2 = '#bfd8d2', $col3 = '#fedcd2', $col4 = '#df744a',
     $base = "#e5f8ff", $focus = "#fff", $current = "#fff",
-    $rules = "#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(https://view.moezx.cc/images/2018/01/03/sakura.png);background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.0)}.wp-core-ui .button-primary{background:#bfd8d2!important;border-color:#8fbbb1 #8fbbb1 #8fbbb1!important;color:#fff!important;box-shadow:0 1px 0 #8fbbb1!important;text-shadow:0 -1px 1px #8fbbb1,1px 0 1px #8fbbb1,0 1px 1px #8fbbb1,-1px 0 1px #8fbbb1!important}");
+    $rules = "#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(". static_link() ."/background/sakura.png);background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.0)}.wp-core-ui .button-primary{background:#bfd8d2!important;border-color:#8fbbb1 #8fbbb1 #8fbbb1!important;color:#fff!important;box-shadow:0 1px 0 #8fbbb1!important;text-shadow:0 -1px 1px #8fbbb1,1px 0 1px #8fbbb1,0 1px 1px #8fbbb1,-1px 0 1px #8fbbb1!important}");
 
 //custom
 dash_scheme($key = "custom", $name = "Custom",
@@ -1713,6 +1709,19 @@ function html_tag_parser($content)
 }
 add_filter('the_content', 'html_tag_parser'); //替换文章关键词
 //add_filter( 'comment_text', 'html_tag_parser' );//替换评论关键词
+
+// function github_shortcode($atts, $content)
+// {
+//     if (empty($atts['repo']))
+//         return $content;
+//     $github_card = '
+//         <div class="github-card" data-github="'. $atts['repo'] . '
+//         " data-width="400" data-theme="default"></div>
+//         <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+//     ';
+//     return $github_card;
+// }
+// add_shortcode('github', 'github_shortcode');
 
 /*
  * QQ 评论
@@ -1909,10 +1918,3 @@ function permalink_tip()
     }
 }
 add_action('admin_notices', 'permalink_tip');
-
-// 禁用 WordPress 自动保存
-function disableAutoSave()
-{
-    wp_deregister_script('autosave');
-}
-add_action('wp_print_scripts', 'disableAutoSave');

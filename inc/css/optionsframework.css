@@ -90,7 +90,7 @@ a#options-group-7-tab:before {
     float: left;
 }
 
-a#options-group-8-tab:before { 
+a#options-group-8-tab:before {
     font-family: "dashicons";
     content: "\f487";
     float: left;
@@ -120,29 +120,29 @@ input[type="button"]{
     border: none !important;
 	background:#FF5858 !important;
 	color:#fff !important
-} 
+}
 
-input[type=text], 
-input[type=password], 
-input[type=checkbox], 
-input[type=color], 
-input[type=date], 
-input[type=datetime], 
-input[type=datetime-local], 
-input[type=email], 
-input[type=month], 
-input[type=number], 
-input[type=radio], 
-input[type=tel], 
-input[type=time], 
-input[type=url], 
-input[type=week], 
-input[type=search], 
+input[type=text],
+input[type=password],
+input[type=checkbox],
+input[type=color],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=radio],
+input[type=tel],
+input[type=time],
+input[type=url],
+input[type=week],
+input[type=search],
 select, textarea{
 	box-shadow:none
-} 
+}
 input[type="submit" i], input[type="reset" i]{
-	
+
 }
 
 #optionsframework h4 {
@@ -443,8 +443,8 @@ input.of-radio-img-radio{display: none;}
 }
 
 
-#optionsframework .section-color .controls, 
-#optionsframework .section-colorradio .controls, 
+#optionsframework .section-color .controls,
+#optionsframework .section-colorradio .controls,
 #optionsframework .section-radio .controls{float: none;width: 100%;overflow: hidden;margin-bottom: 5px;}
 
 #optionsframework .section-color .explain,

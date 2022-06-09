@@ -19,13 +19,13 @@
 		}
 	?>
 	</div><!-- #page Pjax container-->
-	<script src="<?php bloginfo('template_url'); ?>/cdn/live2d-widget/autoload.js"></script>
+	<script src="<?php bloginfo("template_url"); ?>/live2d/autoload.min.js"></script>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info" theme-info="Sakura v<?php echo SAKURA_VERSION; ?>">
 			<div class="footertext">
 				<div class="img-preload">
-					<img src="<?php bloginfo('template_url'); ?>/cdn-moezx/img/Sakura/images/wordpress-rotating-ball-o.svg">
-					<img src="<?php bloginfo('template_url'); ?>/cdn-moezx/img/Sakura/images/disqus-preloader.svg">
+					<img src="<?php static_link_e(); ?>/img/Sakura/images/wordpress-rotating-ball-o.svg">
+					<img src="<?php static_link_e(); ?>/img/Sakura/images/disqus-preloader.svg">
 				</div>
 				<p style="color: #666666;"><?php echo akina_option('footer_info', ''); ?></p>
 			</div>
@@ -55,7 +55,7 @@
 	<!-- m-nav-center -->
 	<div id="mo-nav">
 		<div class="m-avatar">
-			<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : get_template_directory_uri().'/images/avatar.jpg'; ?>
+			<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : static_link().'/img/Sakura/images/avatar.jpg'; ?>
 			<img src="<?php echo $ava ?>">
 		</div>
 		<div class="m-search">

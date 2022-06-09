@@ -58,7 +58,7 @@ function optionsframework_options()
     // 背景默认值
     $background_defaults = array(
         'color' => '',
-        'image' => 'https://view.moezx.cc/images/2018/12/23/knights-of-the-frozen-throne-8k-qa.jpg',
+        'image' => static_link() . '/img/other/knights-of-the-frozen-throne-8k-qa.jpg',
         'repeat' => 'repeat',
         'position' => 'top center',
         'attachment' => 'scroll');
@@ -143,7 +143,7 @@ function optionsframework_options()
         'name' => __('Change web background', 'sakura'), /*切换网页背景*/
         'desc' => __('The foreground switches the background of the webpage. There are 8 urls separated by commas. The order corresponds to the foreground scheme tool button position (the order of the buttons is from left to right, top to bottom). If no background is needed, fill in the corresponding position as none.<strong>Note: If the theme is updated from v3.2.3 and below, be sure to change the [Version Control] parameter under the [Other] tab of this configuration page to any new value!</strong>', 'sakura'), /*前台切换网页背景，共8个url，使用英文逗号分隔，顺序对应前台切换主题按钮位置（按钮顺序从左至右，从上至下）,如不需要背景则填写对应位置为none。<strong>注意：如果主题是从v3.2.3及以下更新过来的，请务必将本配置页的【其他】标签下的【版本控制】参数修改为任意新值！</strong>*/
         'id' => 'sakura_skin_bg',
-        'std' => 'none,/wp-content/themes/Sakura/cdn/background/sakura.png,/wp-content/themes/Sakura/cdn/background/plaid2dbf8.jpg,/wp-content/themes/Sakura/cdn/background/star02.png,/wp-content/themes/Sakura/cdn/background/kyotoanimation.png,/wp-content/themes/Sakura/cdn/background/dot_orange.gif,/wp-content/themes/Sakura/cdn-moezx/other-sites/api-index/images/me.png',
+        'std' => 'none,' . static_link() . '/background/sakura.png,' . static_link() . '/background/plaid2dbf8.jpg,' . static_link() . '/background/star02.png,' . static_link() . '/background/kyotoanimation.png,' . static_link() . '/background/dot_orange.gif,' . static_link() . '/img/other/me.png',
         'type' => 'textarea');
 
     $options[] = array(
@@ -959,7 +959,7 @@ function optionsframework_options()
         'name' => __('Other custom panel styles(CSS)', 'sakura'), /*其他自定义面板样式(CSS)*/
         'desc' => __('If you need to adjust other styles of the panel, put the style here.', 'sakura'), /*如果还需要对面板其他样式进行调整可以把style放到这里*/
         'id' => 'dash_scheme_css_rules',
-        'std' => '#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(https://view.moezx.cc/images/2019/04/21/windows10-2019-4-21-i3.jpg);background-size:cover;background-repeat:no-repeat;background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.8)}',
+        'std' => '#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(' . static_link() . '/img/other/windows10-2019-4-21-i3.jpg);background-size:cover;background-repeat:no-repeat;background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.8)}',
         'type' => 'textarea');
 
     $options[] = array(
@@ -972,7 +972,7 @@ function optionsframework_options()
         'name' => __('Login interface logo', 'sakura'), /*后台登陆界面logo*/
         'desc' => __('Used for login interface display', 'sakura'), /*用于登录界面显示*/
         'id' => 'logo_img',
-        'std' => $imagepath . 'mashiro-logo-s.png',
+        'std' => static_link() . '/img/Sakura/images/mashiro-logo-s.png',
         'type' => 'upload');
 
     $options[] = array(
@@ -1030,17 +1030,17 @@ function optionsframework_options()
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Use the front-end library locally (lib.js、lib.css)', 'sakura'), /*本地调用前端库（lib.js、lib.css）*/
-        'desc' => __('The front-end library don\'t load from jsDelivr, not recommand', 'sakura'), /*前端库不走 jsDelivr，不建议启用*/
-        'id' => 'jsdelivr_cdn_test',
-        'std' => '0',
-        'type' => 'checkbox');
+        'name' => __('静态资源 CDN', 'sakura'), /*图片库*/
+        'desc' => __('例如：https://cdn.jsdelivr.net/gh/Lin515/Sakura@master/cdn', 'sakura'),
+        'id' => 'static_cdn',
+        'std' => 'https://cdn.jsdelivr.net/gh/Lin515/Sakura@master/cdn',
+        'type' => 'text');
 
     $options[] = array(
-        'name' => __('Use js and css file of the theme (sakura-app.js、style.css) locally', 'sakura'), /*本地调用主题 js、css 文件（sakura-app.js、style.css）*/
-        'desc' => __('The js and css files of the theme do not load from jsDelivr, please open when DIY', 'sakura'), /*主题的 js、css 文件不走 jsDelivr，DIY 时请开启*/
-        'id' => 'app_no_jsdelivr_cdn',
-        'std' => '0',
+        'name' => __('使用本地静态资源', 'sakura'),
+        'desc' => __('使用本地静态资源', 'sakura'),
+        'id' => 'static_use_local',
+        'std' => '1',
         'type' => 'checkbox');
 
     //其他
@@ -1218,7 +1218,7 @@ function optionsframework_options()
         'name' => __('lazyload spinner', 'sakura'),
         'desc' => __('The placeholder to display when the image loads, fill in the image url', 'sakura'), /*图片加载时要显示的占位图，填写图片 url*/
         'id' => 'lazyload_spinner',
-        'std' => get_template_directory_uri().'/cdn-moezx/img/svg/loader/trans.ajax-spinner-preloader.svg',
+        'std' => static_link() . '/img/svg/loader/trans.ajax-spinner-preloader.svg',
         'type' => 'text');
 
     $options[] = array(
