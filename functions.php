@@ -1909,4 +1909,10 @@ function permalink_tip()
     }
 }
 add_action('admin_notices', 'permalink_tip');
-//code end
+
+// 禁用 WordPress 自动保存
+function disableAutoSave()
+{
+    wp_deregister_script('autosave');
+}
+add_action('wp_print_scripts', 'disableAutoSave');
