@@ -324,7 +324,7 @@ function checkskinSecter() {
 function checkBgImgCookie() {
     var bgurl = getCookie("bgImgSetting");
     if (!bgurl) {
-        $("#white-bg").click();
+        $("#sakura-bg").click();
     } else {
         $("#" + bgurl).click();
     }
