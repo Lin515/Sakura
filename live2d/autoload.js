@@ -32,6 +32,8 @@ if (screen.width >= 768) {
 		live2d_settings['modelStorage'] = false; // 不储存模型 ID
 		live2d_settings['modelId'] = 1; // 显示Poi
 		live2d_settings['modelTexturesId'] = Math.floor(Math.random()*87) + 1; // 获取1~87的随机整数 Poi一共有87件衣服
+		live2d_settings['waifuEdgeSide'] = 'left:0';     // 看板娘贴边方向，例如 'left:0'(靠左 0px), 'right:30'(靠右 30px)
+		live2d_settings['showHitokoto'] = false;         // 关闭一言
 		/* 在 initModel 前添加 */
 		initModel(api_path + '/waifu-tips.json');
 	});
