@@ -1068,6 +1068,13 @@ function optionsframework_options()
     );
 
     $options[] = array(
+        'name' => __('关闭 APlayer', 'sakura'),
+        'desc' => __('播放器启用时默认会载入主题自带的 APlayer，如果安装了 Hermit X 插件并且为全局启用，则可以关闭主题自带的 APlayer。', 'sakura'),
+        'id' => 'aplayer_close',
+        'std' => '0',
+        'type' => 'checkbox');
+
+    $options[] = array(
         'name' => __('Footer float music player', 'sakura'), /*页脚悬浮播放器*/
         'desc' => __('Choose which platform you\'ll use.', 'sakura'),
         'id' => 'aplayer_server',

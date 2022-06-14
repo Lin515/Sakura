@@ -1,6 +1,6 @@
 @font-face {
-	font-family:"socialshare";src:url("../../share.js/dist/fonts/iconfont.eot");
-src:url("../../share.js/dist/fonts/iconfont.eot?#iefix") format("embedded-opentype"),url("../../share.js/dist/fonts/iconfont.woff") format("woff"),url("../../share.js/dist/fonts/iconfont.ttf") format("truetype"),url("../../share.js/dist/fonts/iconfont.svg#iconfont") format("svg")
+	font-family:"socialshare";src:url("../share.js/dist/fonts/iconfont.eot");
+src:url("../share.js/dist/fonts/iconfont.eot?#iefix") format("embedded-opentype"),url("../share.js/dist/fonts/iconfont.woff") format("woff"),url("../share.js/dist/fonts/iconfont.ttf") format("truetype"),url("../share.js/dist/fonts/iconfont.svg#iconfont") format("svg")
 }
 
 .social-share {
