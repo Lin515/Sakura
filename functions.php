@@ -949,7 +949,15 @@ function comment_mail_notify($comment_id)
     $spam_confirmed = $comment->comment_approved;
     $mail_notify = akina_option('mail_notify') ? get_comment_meta($parent_id, 'mail_notify', false) : false;
     $admin_notify = akina_option('admin_notify') ? '1' : (get_comment($parent_id)->comment_author_email != get_bloginfo('admin_email') ? '1' : '0');
+
     if (($parent_id != '') && ($spam_confirmed != 'spam') && ($admin_notify != '0') && (!$mail_notify)) {
+        $qq_number = get_comment_meta($parent_id, 'new_field_qq', true);
+        if ($qq_number)
+            $img_src = 'https://q2.qlogo.cn/headimg_dl?dst_uin=' . $qq_number . '&spec=140';
+        else
+            $img_src = 'data:image/jpg/png/gif;base64,' . read_image_base64(get_template_directory() . '/cdn/img/other/Transparent_Akkarin.th.jpg');
+        $img_avatar = '<img style="width:140px;z-index: 666;padding: 5px 10px;" src="'. $img_src .'">';
+
         $wp_email = $mail_user_name . '@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
         $to = trim(get_comment($parent_id)->comment_author_email);
         $subject = '你在 [' . get_option("blogname") . '] 的留言有了回应';
@@ -963,9 +971,8 @@ function comment_mail_notify($comment_id)
       overflow: hidden;
       -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.18);">
-        <header style="overflow: hidden;">
-            <img style="width:100%;z-index: 666;" src="'. static_link() . '/img/other/head.jpg">
-        </header>
+        <header style="overflow: hidden;"></header>
+        '. $img_avatar .'
         <div style="padding: 5px 20px;">
         <p style="position: relative;
         color: white;
@@ -986,7 +993,7 @@ function comment_mail_notify($comment_id)
         . trim($comment->comment_content) . '</div>
 
       <div style="text-align: center;">
-          <img src="'. static_link() . '/img/other/hr.png" alt="hr" style="width:100%;
+          <img src="https://cdn.jsdelivr.net/gh/Lin515/Sakura@master/cdn/img/other/hr.png" alt="hr" style="width:100%;
                                                                                                   margin:5px auto 5px auto;
                                                                                                   display: block;">
           <a style="text-transform: uppercase;
@@ -1020,6 +1027,31 @@ function comment_mail_notify($comment_id)
     }
 }
 add_action('comment_post', 'comment_mail_notify');
+
+// 首先判断是否已有 .base64 的缓存，若有则读取，没有则创建
+function read_image_base64($file)
+{
+    $file_base64 = $file . '.base64';
+    $contents = file_get_contents($file_base64);
+    $base64 = '';
+    if (!$contents)
+    {
+        $fp = fopen($file, 'rb');
+        if ($fp)
+        {
+            $gambar = fread($fp, filesize($file));
+            fclose($fp);
+            if ($gambar)
+            {
+                $base64 = chunk_split(base64_encode($gambar));
+                file_put_contents($file_base64, $base64);
+            }
+        }
+    }
+    else
+        $base64 = $contents;
+    return $base64;
+}
 
 /*
  * 链接新窗口打开

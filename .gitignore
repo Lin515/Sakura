@@ -6,3 +6,5 @@
 /manifest/webp/*
 !/manifest/webp/.gitkeep
 /manifest/manifest.json
+
+*.base64
