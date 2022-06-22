@@ -133,8 +133,8 @@ function feature_gallery() {
  * @rest api接口路径：https://sakura.2heng.xin/wp-json/sakura/v1/database/update
  */
 function update_database() {
-    if (akina_option('cover_cdn_options') == "type_1") {
-        $output = Cache::update_database();
+    if ($_GET['type'] == 'screen' || $_GET['type'] == 'post') {
+        $output = Cache::update_database($_GET['type']);
         $result = new WP_REST_Response($output, 200);
         return $result;
     } else {

@@ -141,23 +141,31 @@ class Images
         return $output;
     }
 
+    public static function local_cover() {
+        global $cover_local_array;
+        $img = array_rand($cover_local_array);
+        $imgurl = trim($cover_local_array[$img]);
+        $imgurl = str_replace(get_template_directory(), get_template_directory_uri(), $imgurl);
+        return $imgurl;
+    }
+
     public static function cover_gallery() {
-        if (akina_option('cover_cdn_options') == "type_2") {
-            $img_array = glob(get_template_directory() . "/manifest/gallary/*.{gif,jpg,png}", GLOB_BRACE);
-            $img = array_rand($img_array);
-            $imgurl = trim($img_array[$img]);
-            $imgurl = str_replace(get_template_directory(), get_template_directory_uri(), $imgurl);
-        } elseif (akina_option('cover_cdn_options') == "type_3") {
-            $imgurl = akina_option('cover_cdn');
+        if (akina_option('screen_cover_options') == "type_2") {
+            $imgurl = self::local_cover();
+        } elseif (akina_option('screen_cover_options') == "type_3") {
+            $imgurl = akina_option('screen_cover_link');
         } else {
-            global $sakura_image_array;
-            $img_array = json_decode($sakura_image_array, true);
-            $img = array_rand($img_array);
-            $img_domain = akina_option('cover_cdn') ? akina_option('cover_cdn') : get_template_directory_uri();
-            if (strpos($_SERVER['HTTP_ACCEPT'], 'image/webp') !== false) {
-                $imgurl = $img_domain . "/manifest/" . $img_array[$img]["webp"][0];
+            global $cover_screen_array;
+            $img = array_rand($cover_screen_array);
+            $img_domain = akina_option('screen_cover_link') ? akina_option('screen_cover_link') : get_template_directory_uri() . '/manifest';
+            if (akina_option('screen_cover_options') == "type_4") {
+                $imgurl = $img_domain . "/gallary/" . $cover_screen_array[$img]["source"];
             } else {
-                $imgurl = $img_domain . "/manifest/" . $img_array[$img]["jpeg"][0];
+                if (strpos($_SERVER['HTTP_ACCEPT'], 'image/webp') !== false) {
+                    $imgurl = $img_domain . "/" . $cover_screen_array[$img]["webp"];
+                } else {
+                    $imgurl = $img_domain . "/" . $cover_screen_array[$img]["jpeg"];
+                }
             }
         }
         return $imgurl;
@@ -165,9 +173,22 @@ class Images
 
     public static function feature_gallery() {
         if (akina_option('post_cover_options') == "type_2") {
-            $imgurl = akina_option('post_cover');
+            $imgurl = self::local_cover();
+        } elseif (akina_option('post_cover_options') == "type_3") {
+            $imgurl = akina_option('post_cover_link');
         } else {
-            $imgurl = self::cover_gallery();
+            global $cover_post_array;
+            $img = array_rand($cover_post_array);
+            $img_domain = akina_option('post_cover_link') ? akina_option('post_cover_link') : get_template_directory_uri() . '/manifest';
+            if (akina_option('post_cover_options') == "type_4") {
+                $imgurl = $img_domain . "/gallary/" . $cover_post_array[$img]["source"];
+            } else {
+                if (strpos($_SERVER['HTTP_ACCEPT'], 'image/webp') !== false) {
+                    $imgurl = $img_domain . "/" . $cover_post_array[$img]["webp"];
+                } else {
+                    $imgurl = $img_domain . "/" . $cover_post_array[$img]["jpeg"];
+                }
+            }
         }
         return $imgurl;
     }

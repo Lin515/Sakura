@@ -1894,7 +1894,7 @@ add_action('pre_comment_on_post', 'allow_more_tag_in_comment');
  */
 function create_sakura_table()
 {
-    global $wpdb, $sakura_image_array, $sakura_privkey;
+    global $wpdb, $cover_local_array, $cover_screen_array, $cover_post_array, $sakura_privkey;
     $sakura_table_name = $wpdb->base_prefix . 'sakura';
     require_once ABSPATH . "wp-admin/includes/upgrade.php";
     dbDelta("CREATE TABLE IF NOT EXISTS `" . $sakura_table_name . "` (
@@ -1903,16 +1903,30 @@ function create_sakura_table()
         PRIMARY KEY (`mate_key`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;");
     //default data
-    if (!$wpdb->get_var("SELECT COUNT(*) FROM $sakura_table_name WHERE mate_key = 'manifest_json'")) {
+    if (!$wpdb->get_var("SELECT COUNT(*) FROM $sakura_table_name WHERE mate_key = 'screen_manifest_json'")) {
         $manifest = array(
-            "mate_key" => "manifest_json",
+            "mate_key" => "screen_manifest_json",
             "mate_value" => file_get_contents(get_template_directory() . "/manifest/manifest.json"),
         );
         $wpdb->insert($sakura_table_name, $manifest);
     }
-    if (!$wpdb->get_var("SELECT COUNT(*) FROM $sakura_table_name WHERE mate_key = 'json_time'")) {
+    if (!$wpdb->get_var("SELECT COUNT(*) FROM $sakura_table_name WHERE mate_key = 'screen_json_time'")) {
         $time = array(
-            "mate_key" => "json_time",
+            "mate_key" => "screen_json_time",
+            "mate_value" => date("Y-m-d H:i:s", time()),
+        );
+        $wpdb->insert($sakura_table_name, $time);
+    }
+    if (!$wpdb->get_var("SELECT COUNT(*) FROM $sakura_table_name WHERE mate_key = 'post_manifest_json'")) {
+        $manifest = array(
+            "mate_key" => "post_manifest_json",
+            "mate_value" => file_get_contents(get_template_directory() . "/manifest/manifest.json"),
+        );
+        $wpdb->insert($sakura_table_name, $manifest);
+    }
+    if (!$wpdb->get_var("SELECT COUNT(*) FROM $sakura_table_name WHERE mate_key = 'post_json_time'")) {
+        $time = array(
+            "mate_key" => "post_json_time",
             "mate_value" => date("Y-m-d H:i:s", time()),
         );
         $wpdb->insert($sakura_table_name, $time);
@@ -1925,7 +1939,9 @@ function create_sakura_table()
         $wpdb->insert($sakura_table_name, $privkey);
     }
     //reduce sql query
-    $sakura_image_array = $wpdb->get_var("SELECT `mate_value` FROM  $sakura_table_name WHERE `mate_key`='manifest_json'");
+    $cover_local_array = glob(get_template_directory() . "/manifest/gallary/*.{gif,jpg,png}", GLOB_BRACE);
+    $cover_screen_array = json_decode($wpdb->get_var("SELECT `mate_value` FROM  $sakura_table_name WHERE `mate_key`='screen_manifest_json'"), true);
+    $cover_post_array = json_decode($wpdb->get_var("SELECT `mate_value` FROM  $sakura_table_name WHERE `mate_key`='post_manifest_json'"), true);
     $sakura_privkey = $wpdb->get_var("SELECT `mate_value` FROM  $sakura_table_name WHERE `mate_key`='privkey'");
 }
 add_action('after_setup_theme', 'create_sakura_table');

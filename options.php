@@ -238,18 +238,20 @@ function optionsframework_options()
         'name' => __('Cover manifest', 'sakura'), /*首页文章特色图选项*/
         'desc' => __('Select how to call the post featue image, only for the post without feature image', 'sakura'), /*选择文章特色图的调用方式，只对没有设置特色图像的文章生效*/
         'id' => 'post_cover_options',
-        'std' => "type_1",
+        'std' => "type_2",
         'type' => "select",
         'options' => array(
-            'type_1' => __('same as the cover of the first screen (default)', 'sakura'), /*跟随第一屏封面图*/
-            'type_2' => __('custom api (advanced)', 'sakura'), /*外部随机图API*/
+            'type_1' => __('webp images (optimization)', 'sakura'), /*webp优化随机图*/
+            'type_2' => __('built-in api (default)', 'sakura'), /*内置原图随机图*/
+            'type_3' => __('custom api (advanced)', 'sakura'), /*外部随机图API*/
+            'type_4' => __('webp优化随机图-原图', 'sakura'),
         )
     );
 
     $options[] = array(
         'name' => __('Cover images url', 'sakura'), /*图片库url*/
-        'desc' => __('Fill in the custom image api url.', 'sakura'),
-        'id' => 'post_cover',
+        'desc' => sprintf(__('填写 manifest 路径，更多信息请参考<a href="https://github.com/mashirozx/Sakura/wiki/options">Wiki</a>,，如果你在上面选择了webp优化，点击<a href = "%s?type=post">这里</a>更新 manifest', 'sakura'), rest_url('sakura/v1/database/update')),
+        'id' => 'post_cover_link',
         'std' => '',
         'type' => 'text');
 
@@ -389,20 +391,21 @@ function optionsframework_options()
     $options[] = array(
         'name' => __('Cover manifest', 'sakura'), /*封面图片库选项*/
         'desc' => __('Select how to call the cover random image', 'sakura'), /*选择封面随机图的调用方式*/
-        'id' => 'cover_cdn_options',
+        'id' => 'screen_cover_options',
         'std' => "type_2",
         'type' => "select",
         'options' => array(
             'type_1' => __('webp images (optimization)', 'sakura'), /*webp优化随机图*/
             'type_2' => __('built-in api (default)', 'sakura'), /*内置原图随机图*/
             'type_3' => __('custom api (advanced)', 'sakura'), /*外部随机图API*/
+            'type_4' => __('webp优化随机图-原图'),
         )
     );
 
     $options[] = array(
         'name' => __('Cover images url', 'sakura'), /*图片库url*/
-        'desc' => sprintf(__('Fill in the manifest path for random picture display, please refer to <a href = "https: //github.com/mashirozx/Sakura/wiki/options">Wiki </a>. If you select webp images above, click <a href = "%s">here</a> to update manifest', 'sakura'), rest_url('sakura/v1/database/update')), /*填写 manifest 路径，更多信息请参考<a href="https://github.com/mashirozx/Sakura/wiki/options">Wiki</a>,，如果你在上面选择了webp优化，点击<a href = "%s">这里</a>更新 manifest*/
-        'id' => 'cover_cdn',
+        'desc' => sprintf(__('填写 manifest 路径，更多信息请参考<a href="https://github.com/mashirozx/Sakura/wiki/options">Wiki</a>,，如果你在上面选择了webp优化，点击<a href = "%s?type=screen">这里</a>更新 manifest', 'sakura'), rest_url('sakura/v1/database/update')),
+        'id' => 'screen_cover_link',
         'std' => 'https://cdn.jsdelivr.net/gh/mashirozx/sakura@3.3.3',
         'type' => 'text');
 
