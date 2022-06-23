@@ -473,19 +473,19 @@ function get_author_class($comment_author_email, $user_id)
         "SELECT comment_ID as author_count FROM $wpdb->comments WHERE comment_author_email = '$comment_author_email' "));
     if ($author_count >= 1 && $author_count < 5) //数字可自行修改，代表评论次数。
     {
-        echo '<span class="showGrade0" title="Lv0"><img src="'. static_link() . '/img/Sakura/images/level/level_0.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade0" title="Lv0"><img src="'. static_link() . '/img/level/level_0.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 6 && $author_count < 10) {
-        echo '<span class="showGrade1" title="Lv1"><img src="'. static_link() . '/img/Sakura/images/level/level_1.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade1" title="Lv1"><img src="'. static_link() . '/img/level/level_1.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 10 && $author_count < 20) {
-        echo '<span class="showGrade2" title="Lv2"><img src="'. static_link() . '/img/Sakura/images/level/level_2.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade2" title="Lv2"><img src="'. static_link() . '/img/level/level_2.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 20 && $author_count < 40) {
-        echo '<span class="showGrade3" title="Lv3"><img src="'. static_link() . '/img/Sakura/images/level/level_3.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade3" title="Lv3"><img src="'. static_link() . '/img/level/level_3.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 40 && $author_count < 80) {
-        echo '<span class="showGrade4" title="Lv4"><img src="'. static_link() . '/img/Sakura/images/level/level_4.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade4" title="Lv4"><img src="'. static_link() . '/img/level/level_4.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 80 && $author_count < 160) {
-        echo '<span class="showGrade5" title="Lv5"><img src="'. static_link() . '/img/Sakura/images/level/level_5.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade5" title="Lv5"><img src="'. static_link() . '/img/level/level_5.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     } else if ($author_count >= 160) {
-        echo '<span class="showGrade6" title="Lv6"><img src="'. static_link() . '/img/Sakura/images/level/level_6.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
+        echo '<span class="showGrade6" title="Lv6"><img src="'. static_link() . '/img/level/level_6.svg" style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span>';
     }
 
 }
@@ -836,11 +836,11 @@ function custom_html()
     if (akina_option('login_bg')) {
         $loginbg = akina_option('login_bg');
     } else {
-        $loginbg = static_link() . '/img/Sakura/images/hd.png';
+        $loginbg = static_link() . '/img/hd.png';
     }
     echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/login.js"></script>' . "\n";
     echo '<script type="text/javascript">' . "\n";
-    echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'. static_link() . '/img/Sakura/images/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
+    echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'. static_link() . '/img/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
     echo 'jQuery(\'#bg\').children(\'img\').attr(\'src\', \'' . $loginbg . '\').load(function(){' . "\n";
     echo '	resizeImage(\'bg\');' . "\n";
     echo '	jQuery(window).bind("resize", function() { resizeImage(\'bg\'); });' . "\n";
@@ -1011,7 +1011,7 @@ function comment_mail_notify($comment_id)
     </div>
 ';
         $message = convert_smilies($message);
-        $message = str_replace("{{", '<img src="'. static_link() . '/img/Sakura/images/smilies/bili/hd/ic_emoji_', $message);
+        $message = str_replace("{{", '<img src="'. static_link() . '/img/smilies/bili/hd/ic_emoji_', $message);
         $message = str_replace("}}", '.png" alt="emoji" style="height: 2em; max-height: 2em;">', $message);
 
         $message = str_replace('{UPLOAD}', 'https://i.loli.net/', $message);
@@ -1112,7 +1112,7 @@ add_filter('comment_text', 'comment_picture_support');
 add_filter('smilies_src', 'custom_smilies_src', 1, 10);
 function custom_smilies_src($img_src, $img, $siteurl)
 {
-    return static_link() . '/img/Sakura/images/smilies/' . $img;
+    return static_link() . '/img/smilies/' . $img;
 }
 // 简单遍历系统表情库，今后应考虑标识表情包名——使用增加的扩展名，同时保留原有拓展名
 // 还有一个思路是根据表情调用路径来判定<-- 此法最好！
@@ -1123,7 +1123,7 @@ function push_smilies()
     foreach ($wpsmiliestrans as $k => $v) {
         $Sname = str_replace(":", "", $k);
         $Svalue = $v;
-        $return_smiles = $return_smiles . '<span title="' . $Sname . '" onclick="grin(' . "'" . $Sname . "'" . ')"><img src="'. static_link() . '/img/Sakura/images/smilies/' . $Svalue . '" /></span>';
+        $return_smiles = $return_smiles . '<span title="' . $Sname . '" onclick="grin(' . "'" . $Sname . "'" . ')"><img src="'. static_link() . '/img/smilies/' . $Svalue . '" /></span>';
     }
     return $return_smiles;
 }
@@ -1247,21 +1247,21 @@ $bilismiliestrans = array();
 function push_bili_smilies()
 {
     global $bilismiliestrans;
-    $smiles_path = __DIR__ . "/cdn/img/Sakura/images/smilies/bili/";
+    $smiles_path = __DIR__ . "/cdn/img/smilies/bili/";
     $name = array('baiyan', 'fadai', 'koubi', 'qinqin', 'weiqu', 'bishi', 'fanu', 'kun', 'se', 'weixiao', 'bizui', 'ganga', 'lengmo', 'shengbing', 'wunai', 'chan', 'guilian', 'liubixue', 'shengqi', 'xiaoku', 'daku', 'guzhang', 'liuhan', 'shuizhao', 'xieyanxiao', 'dalao', 'haixiu', 'liulei', 'sikao', 'yiwen', 'dalian', 'heirenwenhao', 'miantian', 'tiaokan', 'yun', 'dianzan', 'huaixiao', 'mudengkoudai', 'tiaopi', 'zaijian', 'doge', 'jingxia', 'nanguo', 'touxiao', 'zhoumei', 'facai', 'keai', 'outu', 'tuxue', 'zhuakuang');
     $return_smiles = '';
     for ($i = 0; $i < count($name); $i++) {
         $img_size = getimagesize($smiles_path . $name[$i] . ".png");
         $img_height = $img_size["1"];
         // 选择面版
-        $return_smiles = $return_smiles . '<span class="emotion-secter emotion-item emotion-select-parent" onclick="grin(' . "'" . $name[$i] . "'" . ',type = \'Math\')" style="background-image: url('. static_link() . '/img/Sakura/images/smilies/bili/hd/ic_emoji_' . $name[$i] . '.png);"><div class="img emotion-select-child" style="background-image: url('. static_link() . '/img/Sakura/images/smilies/bili/' . $name[$i] . '.png);
+        $return_smiles = $return_smiles . '<span class="emotion-secter emotion-item emotion-select-parent" onclick="grin(' . "'" . $name[$i] . "'" . ',type = \'Math\')" style="background-image: url('. static_link() . '/img/smilies/bili/hd/ic_emoji_' . $name[$i] . '.png);"><div class="img emotion-select-child" style="background-image: url('. static_link() . '/img/smilies/bili/' . $name[$i] . '.png);
         animation-duration: ' . ($img_height / 32 * 40) . 'ms;
         animation-timing-function: steps(' . ($img_height / 32) . ');
         transform: translateY(-' . ($img_height - 32) . 'px);
         height: ' . $img_height . 'px;
         "></div></span>';
         // 正文转换
-        $bilismiliestrans['{{' . $name[$i] . '}}'] = '<span class="emotion-inline emotion-item"><img src="'. static_link() . '/img/Sakura/images/smilies/bili/' . $name[$i] . '.png" class="img" style="/*background-image: url();*/
+        $bilismiliestrans['{{' . $name[$i] . '}}'] = '<span class="emotion-inline emotion-item"><img src="'. static_link() . '/img/smilies/bili/' . $name[$i] . '.png" class="img" style="/*background-image: url();*/
         animation-duration: ' . ($img_height / 32 * 40) . 'ms;
         animation-timing-function: steps(' . ($img_height / 32) . ');
         transform: translateY(-' . ($img_height - 32) . 'px);
@@ -1295,7 +1295,7 @@ add_filter('the_content_feed', 'featuredtoRSS');
 //
 function bili_smile_filter_rss($content)
 {
-    $content = str_replace("{{", '<img src="'. static_link() . '/img/Sakura/images/smilies/bili/hd/ic_emoji_', $content);
+    $content = str_replace("{{", '<img src="'. static_link() . '/img/smilies/bili/hd/ic_emoji_', $content);
     $content = str_replace("}}", '.png" alt="emoji" style="height: 2em; max-height: 2em;">', $content);
     $content = str_replace('[img]', '<img src="', $content);
     $content = str_replace('[/img]', '" style="display: block;margin-left: auto;margin-right: auto;">', $content);

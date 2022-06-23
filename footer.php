@@ -49,7 +49,7 @@
 	<!-- m-nav-center -->
 	<div id="mo-nav">
 		<div class="m-avatar">
-			<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : static_link().'/img/Sakura/images/avatar.jpg'; ?>
+			<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : static_link().'/img/avatar.jpg'; ?>
 			<img src="<?php echo $ava ?>">
 		</div>
 		<div class="m-search">

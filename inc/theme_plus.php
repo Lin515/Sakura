@@ -485,7 +485,7 @@ function header_user_menu(){
     </div>
   <?php
   }else{
-    $ava = static_link() . '/img/Sakura/images/none.png';
+    $ava = static_link() . '/img/none.png';
     $login_url = akina_option('exlogin_url') ? akina_option('exlogin_url') : get_bloginfo('url').'/wp-login.php';
   ?>
   <div class="header-user-avatar">
@@ -932,7 +932,7 @@ function siren_get_os($ua){
 
 function siren_get_useragent($ua){
   if(akina_option('open_useragent')){
-    $imgurl = static_link() . '/img/Sakura/images/ua/svg/';
+    $imgurl = static_link() . '/img/ua/svg/';
     $browser = siren_get_browsers($ua);
     $os = siren_get_os($ua);
     return '&nbsp;&nbsp;<span class="useragent-info">( <img src="'. $imgurl.$browser[1] .'.svg">&nbsp;'. $browser[0] .'&nbsp;&nbsp;<img src="'. $imgurl.$os[1] .'.svg">&nbsp;'. $os[0] .' )</span>';
@@ -943,7 +943,7 @@ function siren_get_useragent($ua){
 // UA 显示移动定制
 function mobile_get_useragent_icon($ua){
   if(akina_option('open_useragent')){
-    $imgurl = static_link() . '/img/Sakura/images/ua/svg/';
+    $imgurl = static_link() . '/img/ua/svg/';
     $browser = siren_get_browsers($ua);
     $os = siren_get_os($ua);
     return '<span class="useragent-info-m">( <img src="'. $imgurl.$browser[1] .'.svg">&nbsp;&nbsp;<img src="'. $imgurl.$os[1] .'.svg"> )</span>';

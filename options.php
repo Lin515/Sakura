@@ -975,7 +975,7 @@ function optionsframework_options()
         'name' => __('Login interface logo', 'sakura'), /*后台登陆界面logo*/
         'desc' => __('Used for login interface display', 'sakura'), /*用于登录界面显示*/
         'id' => 'logo_img',
-        'std' => static_link() . '/img/Sakura/images/mashiro-logo-s.png',
+        'std' => static_link() . '/img/mashiro-logo-s.png',
         'type' => 'upload');
 
     $options[] = array(
