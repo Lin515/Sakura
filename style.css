@@ -4202,7 +4202,7 @@ i.iconfont.js-toggle-search.iconsearch {
     visibility: visible;
     opacity: .99;
     animation: elastic .5s;
-    background-image: url(./cdn/img/other/iloli.gif);
+    background-image: url(./cdn/img/load-loli.gif);
     background-repeat: no-repeat;
     background-position: bottom right
 }
@@ -5173,7 +5173,8 @@ i.iconfont.down {
         float: right;
         height: 50px;
         line-height: 43px;
-        margin-right: -6px
+        margin-right: -6px;
+        margin-top: -18px;
     }
     .site-title img {
         height: 40px;
@@ -8808,4 +8809,70 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 }
 .bangumi-next i {
     color: orange;
+}
+
+/* 第一屏封面图下的波浪效果 */
+.banner_wave_1 {
+    width: auto;
+    height: 65px;
+    background: url(cdn/img/wave1.png) repeat-x;
+    _filter: alpha(opacity=80);
+    position: absolute;
+    bottom: 0;
+    width: 400%;
+    left: -236px;
+    z-index: 5;
+    opacity: 1;
+    transiton-property: opacity,bottom;
+    transition-duration: .4s,.4s;
+    animation-name: move1;
+    animation-duration: 240s;
+    animation-fill-mode: backwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.banner_wave_2 {
+    width: auto;
+    height: 80px;
+    background: url(cdn/img/wave2.png) repeat-x;
+    _filter: alpha(opacity=80);
+    position: absolute;
+    bottom: 0;
+    width: 400%;
+    left: 0;
+    z-index: 4;
+    opacity: 1;
+    transiton-property: opacity,bottom;
+    transition-duration: .4s,.4s;
+    animation-name: move2;
+    animation-duration: 160s;
+    animation-fill-mode: backwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes move1 {
+  100%{
+    background-position: 100% 0;
+  }
+}
+@keyframes move2 {
+  100%{
+    background-position: -100% 0;
+  }
+}
+
+/* 第一屏底部的箭头 */
+.headertop-down {
+    visibility: hidden;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.headertop-down i {
+    font-size: 28px;
+    color: #fff;
+    transform: scale(1.5,1);
 }

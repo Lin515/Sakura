@@ -1,7 +1,6 @@
 <?php
 
 //https://api.mashiro.top/cover
-
 ?>
 <figure id="centerbg" class="centerbg">
 <?php if ( !akina_option('focus_infos') ){ ?>
@@ -28,7 +27,7 @@
                 <li><a href="<?php echo akina_option('telegram', ''); ?>" target="_blank" class="social-lofter" title="telegram"><img src="<?php static_link_e(); ?>/img/sns/telegram.svg"/></a></li>
                 <?php } ?>
                 <?php if (akina_option('qq')){ ?>
-                <li class="qq"><a href="<?php echo akina_option('qq', ''); ?>" title="Initiate chat ?"><img src="<?php static_link_e(); ?>/img/sns/qq.png"/></a></li>
+                <li class="qq"><a href="tencent://message/?uin=<?php echo akina_option('qq', ''); ?>" title="Initiate chat ?"><img src="<?php static_link_e(); ?>/img/sns/qq.png"/></a></li>
                 <?php } ?>
                 <?php if (akina_option('qzone')){ ?>
                 <li><a href="<?php echo akina_option('qzone', ''); ?>" target="_blank" class="social-qzone" title="qzone"><img src="<?php static_link_e(); ?>/img/sns/qzone.png"/></a></li>

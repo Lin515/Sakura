@@ -22,6 +22,7 @@ mashiro_global.ini = new function() {
         checkskinSecter();
         scrollBar();
         load_bangumi();
+        LinGe_load();
     }
     this.pjax = function() { // pjax reload functions (pjax 重载函数)
         pjaxInit();
@@ -912,9 +913,9 @@ if (mashiro_option.float_player_on) {
             };
         document.addEventListener('DOMContentLoaded', loadMeting, !1);
     }
-    if (document.body.clientWidth > 860) {
+    // if (document.body.clientWidth > 860) {
         aplayerF();
-    }
+    // }
 }
 
 function getqqinfo() {
@@ -1979,4 +1980,19 @@ if ((isWebkit || isOpera || isIe) && document.getElementById && window.addEventL
             element.focus();
         }
     }, false);
+}
+
+function LinGe_load() {
+    if (document.body.clientWidth > 860) {
+        $('#wave_1').addClass('banner_wave_1');
+        $('#wave_2').addClass('banner_wave_2');
+        var headerDown = $('.headertop-down');
+        headerDown.on('click', headertop_down);
+        headerDown.css('visibility', 'visible');
+    }
+}
+
+function headertop_down() {
+    var coverOffset = $('#content').offset().top;
+    $('html,body').animate({scrollTop:coverOffset},600);
 }

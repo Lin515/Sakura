@@ -332,6 +332,13 @@ function optionsframework_options()
         'type' => 'textarea');
 
     $options[] = array(
+        'name' => __('移动端描述', 'sakura'), /*博主描述*/
+        'desc' => __('会显示在移动端左侧栏头像下方', 'sakura'), /*一段自我描述的话*/
+        'id' => 'admin_des_m',
+        'std' => '一生一世，该为谁',
+        'type' => 'textarea');
+
+    $options[] = array(
         'name' => __('Footer info', 'sakura'), /*页脚信息*/
         'desc' => __('Footer description, support for HTML code', 'sakura'), /*页脚说明文字，支持HTML代码*/
         'id' => 'footer_info',
@@ -408,6 +415,13 @@ function optionsframework_options()
         'id' => 'screen_cover_link',
         'std' => 'https://cdn.jsdelivr.net/gh/mashirozx/sakura@3.3.3',
         'type' => 'text');
+
+    $options[] = array(
+        'name' => __('波浪效果', 'sakura'),
+        'desc' => __('默认开启，勾选关闭。封面图下方的波浪动效，和 Mashiro 的博客一样。', 'sakura'),
+        'id' => 'header_wave',
+        'std' => '0',
+        'type' => 'checkbox');
 
     $options[] = array(
         'name' => __('full-screen display', 'sakura'), /*全屏显示*/
@@ -653,7 +667,7 @@ function optionsframework_options()
 
     $options[] = array(
         'name' => __('Tencent QQ', 'sakura'), /*腾讯QQ*/
-        'desc' => __('tencent://message/?uin={{QQ number}}. for example, tencent://message/?uin=123456', 'sakura'), /*tencent://message/?uin={{QQ号码}}，如tencent://message/?uin=123456*/
+        'desc' => __('只需要填QQ号即可，会自动生成为 tencent://message/?uin={你的QQ号的}', 'sakura'),
         'id' => 'qq',
         'std' => '',
         'type' => 'text');

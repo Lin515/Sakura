@@ -83,12 +83,18 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 	<div class="scrollbar" id="bar"></div>
 	<section id="main-container">
 		<?php
-		if(!akina_option('head_focus')){
-		$filter = akina_option('focus_img_filter');
-		?>
-		<div class="headertop <?php echo $filter; ?>">
+		if(!akina_option('head_focus')) {
+			$filter = akina_option('focus_img_filter'); ?>
+			<div class="headertop <?php echo $filter; ?>">
+			<div class="headertop-down faa-float animated">
+				<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+			</div>
+			<?php if (!akina_option('header_wave')): ?>
+				<style>.header-info::before{display: none !important;opacity: 0 !important;}</style>
+				<div id="wave_1"></div><div id="wave_2"></div>
+			<?php endif; ?>
 			<?php get_template_part('layouts/imgbox'); ?>
-		</div>
+			</div>
 		<?php } ?>
 		<div id="page" class="site wrapper">
 			<header class="site-header no-select" role="banner">

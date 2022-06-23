@@ -41,7 +41,16 @@
 			<?php if (akina_option('akina_logo')){ ?>
 			<div class="site-title"><a href="<?php bloginfo('url');?>" ><img src="<?php echo akina_option('akina_logo'); ?>"></a></div>
 			<?php }else{ ?>
-			<h1 class="site-title"><a href="<?php bloginfo('url');?>" ><?php bloginfo('name');?></a></h1>
+				<span class="logolink Lin515">
+					<a href="<?php bloginfo('url');?>">
+						<ruby>
+							<span class="shironeko">在</span>
+							<span class="no">海浪声</span>
+							<span class="shironeko">里思念</span>
+							<span class="sakuraso"></span>
+						</ruby>
+					</a>
+				</span>
 			<?php } ?>
 		</div>
 	</div><!-- m-nav-bar -->
@@ -52,6 +61,31 @@
 			<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : static_link().'/img/avatar.jpg'; ?>
 			<img src="<?php echo $ava ?>">
 		</div>
+		<p style="text-align: center; color: #333; font-weight: 900;
+			font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+			<?php echo akina_option('admin_des_m', '一生一世，该为谁'); ?>
+		</p>
+		<p style="text-align: center; word-spacing: 20px;">
+			<?php if (akina_option('github')){ ?>
+				<a href="<?php echo akina_option('github', ''); ?>" class="fa fa-github" target="_blank" style="color: #333"></a>
+			<?php } ?>
+			<?php if (akina_option('sina')){ ?>
+				<a href="<?php echo akina_option('sina', ''); ?>" class="fa fa-weibo" target="_blank" style="color: #dd4b39"></a>
+			<?php } ?>
+			<?php if (akina_option('twitter')){ ?>
+				<a href="<?php echo akina_option('twitter', ''); ?>" class="fa fa-twitter" target="_blank" style="color: #00aced"></a>
+			<?php } ?>
+			<?php if (akina_option('qq')){ ?>
+				<a href="tencent://message/?uin=<?php echo akina_option('qq', ''); ?>" class="fa fa-qq" target="_blank" style="color: #FF6347"></a>
+			<?php } ?>
+				<!-- <a href="<?php //echo akina_option('wechat', ''); ?>" class="fa fa-weixin" target="_blank" style="color: #32CD32"></a> -->
+			<?php if (akina_option('facebook')){ ?>
+				<a href="<?php echo akina_option('facebook', ''); ?>" class="fa fa-facebook" target="_blank" style="color: #00aced"></a>
+			<?php } ?>
+			<?php if (akina_option('email_name') && akina_option('email_domain')){ ?>
+				<a onclick="mail_me()" class="fa fa-envelope" style="color: #ffbf00"></a>
+			<?php } ?>
+		</p>
 		<div class="m-search">
 			<form class="m-search-form" method="get" action="<?php echo home_url(); ?>" role="search">
 				<input class="m-search-input" type="search" name="s" placeholder="<?php _e('Search...', 'sakura') /*搜索...*/?>" required>
