@@ -649,7 +649,7 @@ function tableOfContentScroll(flag) {
                 tocSelector: '.toc',
                 contentSelector: ['.entry-content', '.links'],
                 headingSelector: 'h1, h2, h3, h4, h5',
-                headingsOffset: heading_fix - window.innerHeight / 2,
+                headingsOffset: heading_fix - 400,
             });
         }
     }

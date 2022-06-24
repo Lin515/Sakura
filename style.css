@@ -7383,7 +7383,12 @@ li>ol {
 
 a.toc-link {
     color: currentColor;
-    height: 100%
+    height: 100%;
+    transition: background-color 0.3s linear,color 0.3s linear;
+}
+
+a.toc-link:hover{
+    color: #FE9600;
 }
 
 .is-collapsible {
