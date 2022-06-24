@@ -1,4 +1,5 @@
 .waifu {
+    cursor: grab;
     position: fixed;
     bottom: 0;
     z-index: 1;
@@ -6,6 +7,10 @@
     -webkit-transform: translateY(3px);
     transform: translateY(3px);
 }
+.waifu:active {
+    cursor: grabbing;
+}
+
 .waifu:hover {
     -webkit-transform: translateY(0);
     transform: translateY(0);
