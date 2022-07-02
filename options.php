@@ -1067,7 +1067,7 @@ function optionsframework_options()
 
     $options[] = array(
         'name' => __('About', 'sakura'), /*关于*/
-        'desc' => sprintf(__('Theme Sakura v %s  |  <a href="https://2heng.xin/theme-sakura/">Theme document</a>  |  <a href="https://github.com/mashirozx/Sakura/">Source code</a><a href="https://github.com/mashirozx/Sakura/releases/latest"><img src="https://img.shields.io/github/release/mashirozx/Sakura.svg?style=flat-square" alt="GitHub release"></a>', 'sakura'), SAKURA_VERSION), /*Theme Sakura v'.SAKURA_VERSION.'  |  <a href="https://2heng.xin/theme-sakura/">主题说明</a>  |  <a href="https://github.com/mashirozx/Sakura/">源码</a><a href="https://github.com/mashirozx/Sakura/releases/latest"><img src="https://img.shields.io/github/release/mashirozx/Sakura.svg?style=flat-square" alt="GitHub release"></a>*/
+        'desc' => sprintf(__('Theme Sakura v %s  |  <a href="https://2heng.xin/theme-sakura/">Theme document</a>  |  <a href="https://github.com/mashirozx/Sakura/">Source code</a><a href="https://github.com/mashirozx/Sakura/releases/latest"><img src="https://img.shields.io/github/release/mashirozx/Sakura.svg?style=flat-square" alt="GitHub release"></a>', 'sakura'), SAKURA_VERSION . akina_option('cookie_version', '')), /*Theme Sakura v'.SAKURA_VERSION.'  |  <a href="https://2heng.xin/theme-sakura/">主题说明</a>  |  <a href="https://github.com/mashirozx/Sakura/">源码</a><a href="https://github.com/mashirozx/Sakura/releases/latest"><img src="https://img.shields.io/github/release/mashirozx/Sakura.svg?style=flat-square" alt="GitHub release"></a>*/
         'id' => 'theme_intro',
         'std' => '',
         'type' => 'typography ');
@@ -1080,7 +1080,7 @@ function optionsframework_options()
         'type' => "images",
         'options' => array(
             'tag' => 'https://img.shields.io/github/release/mashirozx/Sakura.svg?style=flat-square',
-            'tag2' => 'https://img.shields.io/github/commits-since/mashirozx/Sakura/v' . SAKURA_VERSION . '/dev.svg?style=flat-square',
+            'tag2' => 'https://img.shields.io/github/commits-since/mashirozx/Sakura/v' . SAKURA_VERSION . akina_option('cookie_version', '') . '/dev.svg?style=flat-square',
         ),
     );
 

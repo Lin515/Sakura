@@ -177,16 +177,14 @@ add_action('after_setup_theme', 'akina_content_width', 0);
 function sakura_scripts()
 {
     wp_enqueue_script('js_lib', static_link() . '/js/lib.js', array(), SAKURA_VERSION . akina_option('cookie_version', ''), true);
-    wp_enqueue_style('saukra_css', static_link() . '/css/style.min.css', array(), SAKURA_VERSION);
-    wp_enqueue_script('app', static_link() . '/js/sakura-app.min.js', array(), SAKURA_VERSION, true);
+    wp_enqueue_style('saukra_css', get_template_directory_uri() . '/style.min.css', array(), SAKURA_VERSION . akina_option('cookie_version', ''));
+    wp_enqueue_script('app', static_link() . '/js/sakura-app.min.js', array(), SAKURA_VERSION . akina_option('cookie_version', ''), true);
 
     if (!akina_option('aplayer_close') && akina_option('aplayer_server') != 'off')
     {
-        wp_enqueue_script('aplayer_js', static_link() . '/APlayer/dist/APlayer.min.js', array(), SAKURA_VERSION, true);
-        wp_enqueue_style('aplayer_css', static_link() . '/APlayer/dist/APlayer.min.css', array(), SAKURA_VERSION);
+        wp_enqueue_script('aplayer_js', static_link() . '/APlayer/dist/APlayer.min.js', array(), SAKURA_VERSION . akina_option('cookie_version', ''), true);
+        wp_enqueue_style('aplayer_css', static_link() . '/APlayer/dist/APlayer.min.css', array(), SAKURA_VERSION . akina_option('cookie_version', ''));
     }
-
-    //wp_enqueue_script('github_card', static_link() . '/github-cards/widget.js', array(), SAKURA_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -588,7 +586,7 @@ function get_the_link_items($id = null)
             }
 
             if (empty($bookmark->link_image)) {
-                $bookmark->link_image = 'https://view.moezx.cc/images/2017/12/30/Transparent_Akkarin.th.jpg';
+                $bookmark->link_image = static_link() . '/img/other/Transparent_Akkarin.th.jpg';
             }
 
             $output .= '<li class="link-item"><a class="link-item-inner effect-apollo" href="' . $bookmark->link_url . '" title="' . $bookmark->link_description . '" target="_blank" rel="friend"><img class="lazyload" onerror="imgError(this,1)" data-src="' . $bookmark->link_image . '" src="'. static_link() . '/img/svg/loader/trans.ajax-spinner-preloader.svg"><span class="sitename">' . $bookmark->link_name . '</span><div class="linkdes">' . $bookmark->link_description . '</div></a></li>';
@@ -808,9 +806,9 @@ function bolo_QTnextpage_arg1() {
 //Login Page style
 function custom_login()
 {
-    //echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/inc/login.css" />'."\n";
-    echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/inc/login.css?' . SAKURA_VERSION . '" />' . "\n";
-    echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/jquery.min.js"></script>'."\n";
+    //echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/inc/login.css" />'."\n";
+    echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/inc/login.css?' . SAKURA_VERSION . akina_option('cookie_version', '') . '" />' . "\n";
+    echo '<script type="text/javascript" src="' . static_link() . '/js/jquery.min.js"></script>'."\n";
     // echo '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@1.9.0/jquery.min.js"></script>' . "\n";
 }
 
@@ -838,7 +836,7 @@ function custom_html()
     } else {
         $loginbg = static_link() . '/img/hd.png';
     }
-    echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/login.js"></script>' . "\n";
+    echo '<script type="text/javascript" src="' . static_link() . '/js/login.js"></script>' . "\n";
     echo '<script type="text/javascript">' . "\n";
     echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"'. static_link() . '/img/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");' . "\n";
     echo 'jQuery(\'#bg\').children(\'img\').attr(\'src\', \'' . $loginbg . '\').load(function(){' . "\n";
@@ -1586,7 +1584,7 @@ function dash_scheme($key, $name, $col1, $col2, $col3, $col4, $base, $focus, $cu
 dash_scheme($key = "sakura", $name = "Sakura🌸",
     $col1 = '#8fbbb1', $col2 = '#bfd8d2', $col3 = '#fedcd2', $col4 = '#df744a',
     $base = "#e5f8ff", $focus = "#fff", $current = "#fff",
-    $rules = "#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(https://view.moezx.cc/images/2018/01/03/sakura.png);background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.0)}.wp-core-ui .button-primary{background:#bfd8d2!important;border-color:#8fbbb1 #8fbbb1 #8fbbb1!important;color:#fff!important;box-shadow:0 1px 0 #8fbbb1!important;text-shadow:0 -1px 1px #8fbbb1,1px 0 1px #8fbbb1,0 1px 1px #8fbbb1,-1px 0 1px #8fbbb1!important}");
+    $rules = "#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(". static_link() ."/background/sakura.png);background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.0)}.wp-core-ui .button-primary{background:#bfd8d2!important;border-color:#8fbbb1 #8fbbb1 #8fbbb1!important;color:#fff!important;box-shadow:0 1px 0 #8fbbb1!important;text-shadow:0 -1px 1px #8fbbb1,1px 0 1px #8fbbb1,0 1px 1px #8fbbb1,-1px 0 1px #8fbbb1!important}");
 
 //custom
 dash_scheme($key = "custom", $name = "Custom",
@@ -1743,6 +1741,19 @@ function html_tag_parser($content)
 }
 add_filter('the_content', 'html_tag_parser'); //替换文章关键词
 //add_filter( 'comment_text', 'html_tag_parser' );//替换评论关键词
+
+// function github_shortcode($atts, $content)
+// {
+//     if (empty($atts['repo']))
+//         return $content;
+//     $github_card = '
+//         <div class="github-card" data-github="'. $atts['repo'] . '
+//         " data-width="400" data-theme="default"></div>
+//         <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+//     ';
+//     return $github_card;
+// }
+// add_shortcode('github', 'github_shortcode');
 
 /*
  * QQ 评论
