@@ -241,12 +241,45 @@ function attach_image() {
     });
 }
 
+function detectZoom() {
+    var ratio = 0,
+        screen = window.screen,
+        ua = navigator.userAgent.toLowerCase();
+    if (window.devicePixelRatio !== undefined) {
+        ratio = window.devicePixelRatio;
+    }
+    else if (~ua.indexOf('msie')) {
+        if (screen.deviceXDPI && screen.logicalXDPI) {
+            ratio = screen.deviceXDPI / screen.logicalXDPI;
+        }
+    }
+    else if (window.outerWidth !== undefined && window.innerWidth !== undefined) {
+        ratio = window.outerWidth / window.innerWidth;
+    }
+
+    if (ratio) {
+        ratio = Math.round(ratio * 100);
+    }
+    return ratio;
+}
+
 function clean_upload_images() {
     $('#upload-img-show').html('');
 }
 
 function add_upload_tips() {
     $('<div class="insert-image-tips popup"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="insert-img-popuptext" id="uploadTipPopup">上传图片</span></div><input id="upload-img-file" type="file" accept="image/*" multiple="multiple" class="insert-image-button">').insertAfter($(".form-submit #submit"));
+
+    // 动态调整上传图片触发位置
+    if (detectZoom() > 100)
+        $(".insert-image-button").css("transform", "translate(+46px, -46px)");
+    window.addEventListener('resize', function () {
+        if (detectZoom() > 100)
+            $(".insert-image-button").css("transform", "translate(+46px, -46px)");
+        else
+            $(".insert-image-button").css("transform", "translateY(-46px)");
+    });
+
     attach_image();
     $("#upload-img-file").hover(function() {
         $(".insert-image-tips").addClass("insert-image-tips-hover");
