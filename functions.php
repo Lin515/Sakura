@@ -991,7 +991,7 @@ function comment_mail_notify($comment_id)
         . trim($comment->comment_content) . '</div>
 
       <div style="text-align: center;">
-          <img src="https://cdn.jsdelivr.net/gh/Lin515/Sakura@master/cdn/img/other/hr.png" alt="hr" style="width:100%;
+          <img src="' . static_link() . '/img/other/hr.png" alt="hr" style="width:100%;
                                                                                                   margin:5px auto 5px auto;
                                                                                                   display: block;">
           <a style="text-transform: uppercase;
