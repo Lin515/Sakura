@@ -21,7 +21,7 @@ function loadExternalResource(url, type) {
 }
 if (screen.width >= 768) {
 	const api_path = '/wp-content/themes/Sakura/live2d/'
-	const cdn_path = 'https://cdn.jsdelivr.net/gh/Lin515/Sakura@master/live2d/';
+	const cdn_path = 'https://static.lin515.com/Sakura/live2d/';
 	Promise.all([
 		loadExternalResource(cdn_path + "waifu.min.css", "css"),
 		loadExternalResource(cdn_path + "live2d.min.js", "js"),
